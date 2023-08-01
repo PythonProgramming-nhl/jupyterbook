@@ -1,0 +1,1625 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Lecture 5 - Input/output &#8212; Programming in Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'session5/5_input_output';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lecture 6 - Classes in Python" href="../session6/6_classes.html" />
+    <link rel="prev" title="Lecture 4 - Compound data types" href="../session4/4_compound_datatypes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CANVAS_figure.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/CANVAS_figure.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    PythonProgramming - Exercises
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../session01/1_simple_datatypes.html">Lecture 0 - Simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session01/2_simple_datatypes.html">Lecture 1 - Data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session2/2_flowcontrol.html">Lecture 2 - Flow control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session3/3_functions.html">Lecture 3 - Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session4/4_compound_datatypes.html">Lecture 4 - Compound data types</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 5 - Input/output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session6/6_classes.html">Lecture 6 - Classes in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/matplotlib_exercises.html">Introduction to matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/numpy_exercises.html">Introduction to NumPy - Numerical Python</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsession5/5_input_output.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/session5/5_input_output.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 5 - Input/output</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-text-files">Reading text files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-files">Writing files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remember-to-always-check-your-output-here-the-file-one-way-to-do-that-is-to-read-it-back-in-and-print-it">Remember to always check your output (here the file). One way to do that is to read it back in and print it.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatted-strings">Formatted strings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-task">Your task:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-standard-file-formats">Reading and writing standard file formats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line-parsing-with-argparse">Command-line parsing with argparse</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define helper function</span>
+<span class="kn">from</span> <span class="nn">pytest</span> <span class="kn">import</span> <span class="n">approx</span>
+<span class="k">def</span> <span class="nf">error_message</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Actual </span><span class="si">{</span><span class="n">actual</span><span class="si">}</span><span class="s1"> != Expected </span><span class="si">{</span><span class="n">expected</span><span class="si">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-5-input-output">
+<h1>Lecture 5 - Input/output<a class="headerlink" href="#lecture-5-input-output" title="Permalink to this headline">#</a></h1>
+<p><strong>Reading numeric data</strong></p>
+<ul class="simple">
+<li><p>All reading/writing is done with text objects, i.e. reading a ‘7’ will be type <code class="docutils literal notranslate"><span class="pre">str</span></code> with a single character rather than a numeric value.</p></li>
+<li><p>To get numbers from file intended for computation we have to do a type conversion (typically <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code>)</p></li>
+</ul>
+<p>The following syntax:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="c1"># do stuff</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>file is a File Object that can be iterated with each each element being a line in the file.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">with</span></code> statement simplifies the management of files because it defines the scope of <code class="docutils literal notranslate"><span class="pre">file</span></code> and closes the object automatically when leaving the <code class="docutils literal notranslate"><span class="pre">with</span></code> block.</p></li>
+</ul>
+<p>In other words, the <code class="docutils literal notranslate"><span class="pre">with</span></code> syntax replaces the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+<span class="c1"># do stuff</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Some possible values for <code class="docutils literal notranslate"><span class="pre">mode</span></code>:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'r'</span></code> - open for reading</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'w'</span></code> - open for writing - this mode implies that a completely new file is written</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'a'</span></code> - open for writing in append mode - writes to the end of the file (i.e., if the file already exists, it will append to it, otherwise it will create a new file)</p></li>
+</ul>
+<p>For more access modes, see: <a class="reference external" href="https://docs.python.org/3/library/functions.html#open">https://docs.python.org/3/library/functions.html#open</a></p>
+<p>It is also possible to read binary file format but we will not use it in this course. But as always - check it out on your own.</p>
+<p><strong>Reading data from text file</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">file.readline()</span></code> – reads a line from the opened file into a string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file.readlines()</span></code> – reads all lines from the opened file into a list of strings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file.read()</span></code> - reads the entire opened file into a string</p></li>
+</ul>
+<p><strong>Writing data to a text file</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">file.write()</span></code> - writes its input to the opened file without adding any extra characters, such as line-break characters (<code class="docutils literal notranslate"><span class="pre">\n</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file.writelines()</span></code> - reads an iterable of strings (typically a list of strings) and writes each element to its own line in the opened file. No line break characters (<code class="docutils literal notranslate"><span class="pre">\n</span></code>) are added</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, let us check the type of file in the two different open syntaxes</span>
+<span class="c1"># As an example, we will use the &#39;numbers_one_to_ten.txt&#39; file which on subsequent lines contains the numbers from 1 to 10</span>
+<span class="c1"># Run the code below and check in the output of help() that file is an iterator ()</span>
+
+<span class="c1"># with statement</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;numbers_one_to_ten.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">help</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    
+<span class="c1"># open/close statement</span>
+<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;numbers_one_to_ten.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">help</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on TextIOWrapper object:
+
+class TextIOWrapper(_TextIOBase)
+ |  TextIOWrapper(buffer, encoding=None, errors=None, newline=None, line_buffering=False, write_through=False)
+ |  
+ |  Character and line based layer over a BufferedIOBase object, buffer.
+ |  
+ |  encoding gives the name of the encoding that the stream will be
+ |  decoded or encoded with. It defaults to locale.getencoding().
+ |  
+ |  errors determines the strictness of encoding and decoding (see
+ |  help(codecs.Codec) or the documentation for codecs.register) and
+ |  defaults to &quot;strict&quot;.
+ |  
+ |  newline controls how line endings are handled. It can be None, &#39;&#39;,
+ |  &#39;\n&#39;, &#39;\r&#39;, and &#39;\r\n&#39;.  It works as follows:
+ |  
+ |  * On input, if newline is None, universal newlines mode is
+ |    enabled. Lines in the input can end in &#39;\n&#39;, &#39;\r&#39;, or &#39;\r\n&#39;, and
+ |    these are translated into &#39;\n&#39; before being returned to the
+ |    caller. If it is &#39;&#39;, universal newline mode is enabled, but line
+ |    endings are returned to the caller untranslated. If it has any of
+ |    the other legal values, input lines are only terminated by the given
+ |    string, and the line ending is returned to the caller untranslated.
+ |  
+ |  * On output, if newline is None, any &#39;\n&#39; characters written are
+ |    translated to the system default line separator, os.linesep. If
+ |    newline is &#39;&#39; or &#39;\n&#39;, no translation takes place. If newline is any
+ |    of the other legal values, any &#39;\n&#39; characters written are translated
+ |    to the given string.
+ |  
+ |  If line_buffering is True, a call to flush is implied when a call to
+ |  write contains a newline character.
+ |  
+ |  Method resolution order:
+ |      TextIOWrapper
+ |      _TextIOBase
+ |      _IOBase
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, /, *args, **kwargs)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  __next__(self, /)
+ |      Implement next(self).
+ |  
+ |  __repr__(self, /)
+ |      Return repr(self).
+ |  
+ |  close(self, /)
+ |      Flush and close the IO object.
+ |      
+ |      This method has no effect if the file is already closed.
+ |  
+ |  detach(self, /)
+ |      Separate the underlying buffer from the TextIOBase and return it.
+ |      
+ |      After the underlying buffer has been detached, the TextIO is in an
+ |      unusable state.
+ |  
+ |  fileno(self, /)
+ |      Returns underlying file descriptor if one exists.
+ |      
+ |      OSError is raised if the IO object does not use a file descriptor.
+ |  
+ |  flush(self, /)
+ |      Flush write buffers, if applicable.
+ |      
+ |      This is not implemented for read-only and non-blocking streams.
+ |  
+ |  isatty(self, /)
+ |      Return whether this is an &#39;interactive&#39; stream.
+ |      
+ |      Return False if it can&#39;t be determined.
+ |  
+ |  read(self, size=-1, /)
+ |      Read at most n characters from stream.
+ |      
+ |      Read from underlying buffer until we have n characters or we hit EOF.
+ |      If n is negative or omitted, read until EOF.
+ |  
+ |  readable(self, /)
+ |      Return whether object was opened for reading.
+ |      
+ |      If False, read() will raise OSError.
+ |  
+ |  readline(self, size=-1, /)
+ |      Read until newline or EOF.
+ |      
+ |      Returns an empty string if EOF is hit immediately.
+ |  
+ |  reconfigure(self, /, *, encoding=None, errors=None, newline=None, line_buffering=None, write_through=None)
+ |      Reconfigure the text stream with new parameters.
+ |      
+ |      This also does an implicit stream flush.
+ |  
+ |  seek(self, cookie, whence=0, /)
+ |      Change stream position.
+ |      
+ |      Change the stream position to the given byte offset. The offset is
+ |      interpreted relative to the position indicated by whence.  Values
+ |      for whence are:
+ |      
+ |      * 0 -- start of stream (the default); offset should be zero or positive
+ |      * 1 -- current stream position; offset may be negative
+ |      * 2 -- end of stream; offset is usually negative
+ |      
+ |      Return the new absolute position.
+ |  
+ |  seekable(self, /)
+ |      Return whether object supports random access.
+ |      
+ |      If False, seek(), tell() and truncate() will raise OSError.
+ |      This method may need to do a test seek().
+ |  
+ |  tell(self, /)
+ |      Return current stream position.
+ |  
+ |  truncate(self, pos=None, /)
+ |      Truncate file to size bytes.
+ |      
+ |      File pointer is left unchanged.  Size defaults to the current IO
+ |      position as reported by tell().  Returns the new size.
+ |  
+ |  writable(self, /)
+ |      Return whether object was opened for writing.
+ |      
+ |      If False, write() will raise OSError.
+ |  
+ |  write(self, text, /)
+ |      Write string to stream.
+ |      Returns the number of characters written (which is always equal to
+ |      the length of the string).
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  buffer
+ |  
+ |  closed
+ |  
+ |  encoding
+ |      Encoding of the text stream.
+ |      
+ |      Subclasses should override.
+ |  
+ |  errors
+ |      The error setting of the decoder or encoder.
+ |      
+ |      Subclasses should override.
+ |  
+ |  line_buffering
+ |  
+ |  name
+ |  
+ |  newlines
+ |      Line endings translated so far.
+ |      
+ |      Only line endings translated during reading are considered.
+ |      
+ |      Subclasses should override.
+ |  
+ |  write_through
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from _IOBase:
+ |  
+ |  __del__(...)
+ |  
+ |  __enter__(...)
+ |  
+ |  __exit__(...)
+ |  
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |  
+ |  readlines(self, hint=-1, /)
+ |      Return a list of lines from the stream.
+ |      
+ |      hint can be specified to control the number of lines read: no more
+ |      lines will be read if the total size (in bytes/characters) of all
+ |      lines so far exceeds hint.
+ |  
+ |  writelines(self, lines, /)
+ |      Write a list of lines to stream.
+ |      
+ |      Line separators are not added, so it is usual for each of the
+ |      lines provided to have a line separator at the end.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from _IOBase:
+ |  
+ |  __dict__
+
+Help on TextIOWrapper object:
+
+class TextIOWrapper(_TextIOBase)
+ |  TextIOWrapper(buffer, encoding=None, errors=None, newline=None, line_buffering=False, write_through=False)
+ |  
+ |  Character and line based layer over a BufferedIOBase object, buffer.
+ |  
+ |  encoding gives the name of the encoding that the stream will be
+ |  decoded or encoded with. It defaults to locale.getencoding().
+ |  
+ |  errors determines the strictness of encoding and decoding (see
+ |  help(codecs.Codec) or the documentation for codecs.register) and
+ |  defaults to &quot;strict&quot;.
+ |  
+ |  newline controls how line endings are handled. It can be None, &#39;&#39;,
+ |  &#39;\n&#39;, &#39;\r&#39;, and &#39;\r\n&#39;.  It works as follows:
+ |  
+ |  * On input, if newline is None, universal newlines mode is
+ |    enabled. Lines in the input can end in &#39;\n&#39;, &#39;\r&#39;, or &#39;\r\n&#39;, and
+ |    these are translated into &#39;\n&#39; before being returned to the
+ |    caller. If it is &#39;&#39;, universal newline mode is enabled, but line
+ |    endings are returned to the caller untranslated. If it has any of
+ |    the other legal values, input lines are only terminated by the given
+ |    string, and the line ending is returned to the caller untranslated.
+ |  
+ |  * On output, if newline is None, any &#39;\n&#39; characters written are
+ |    translated to the system default line separator, os.linesep. If
+ |    newline is &#39;&#39; or &#39;\n&#39;, no translation takes place. If newline is any
+ |    of the other legal values, any &#39;\n&#39; characters written are translated
+ |    to the given string.
+ |  
+ |  If line_buffering is True, a call to flush is implied when a call to
+ |  write contains a newline character.
+ |  
+ |  Method resolution order:
+ |      TextIOWrapper
+ |      _TextIOBase
+ |      _IOBase
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, /, *args, **kwargs)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  __next__(self, /)
+ |      Implement next(self).
+ |  
+ |  __repr__(self, /)
+ |      Return repr(self).
+ |  
+ |  close(self, /)
+ |      Flush and close the IO object.
+ |      
+ |      This method has no effect if the file is already closed.
+ |  
+ |  detach(self, /)
+ |      Separate the underlying buffer from the TextIOBase and return it.
+ |      
+ |      After the underlying buffer has been detached, the TextIO is in an
+ |      unusable state.
+ |  
+ |  fileno(self, /)
+ |      Returns underlying file descriptor if one exists.
+ |      
+ |      OSError is raised if the IO object does not use a file descriptor.
+ |  
+ |  flush(self, /)
+ |      Flush write buffers, if applicable.
+ |      
+ |      This is not implemented for read-only and non-blocking streams.
+ |  
+ |  isatty(self, /)
+ |      Return whether this is an &#39;interactive&#39; stream.
+ |      
+ |      Return False if it can&#39;t be determined.
+ |  
+ |  read(self, size=-1, /)
+ |      Read at most n characters from stream.
+ |      
+ |      Read from underlying buffer until we have n characters or we hit EOF.
+ |      If n is negative or omitted, read until EOF.
+ |  
+ |  readable(self, /)
+ |      Return whether object was opened for reading.
+ |      
+ |      If False, read() will raise OSError.
+ |  
+ |  readline(self, size=-1, /)
+ |      Read until newline or EOF.
+ |      
+ |      Returns an empty string if EOF is hit immediately.
+ |  
+ |  reconfigure(self, /, *, encoding=None, errors=None, newline=None, line_buffering=None, write_through=None)
+ |      Reconfigure the text stream with new parameters.
+ |      
+ |      This also does an implicit stream flush.
+ |  
+ |  seek(self, cookie, whence=0, /)
+ |      Change stream position.
+ |      
+ |      Change the stream position to the given byte offset. The offset is
+ |      interpreted relative to the position indicated by whence.  Values
+ |      for whence are:
+ |      
+ |      * 0 -- start of stream (the default); offset should be zero or positive
+ |      * 1 -- current stream position; offset may be negative
+ |      * 2 -- end of stream; offset is usually negative
+ |      
+ |      Return the new absolute position.
+ |  
+ |  seekable(self, /)
+ |      Return whether object supports random access.
+ |      
+ |      If False, seek(), tell() and truncate() will raise OSError.
+ |      This method may need to do a test seek().
+ |  
+ |  tell(self, /)
+ |      Return current stream position.
+ |  
+ |  truncate(self, pos=None, /)
+ |      Truncate file to size bytes.
+ |      
+ |      File pointer is left unchanged.  Size defaults to the current IO
+ |      position as reported by tell().  Returns the new size.
+ |  
+ |  writable(self, /)
+ |      Return whether object was opened for writing.
+ |      
+ |      If False, write() will raise OSError.
+ |  
+ |  write(self, text, /)
+ |      Write string to stream.
+ |      Returns the number of characters written (which is always equal to
+ |      the length of the string).
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  buffer
+ |  
+ |  closed
+ |  
+ |  encoding
+ |      Encoding of the text stream.
+ |      
+ |      Subclasses should override.
+ |  
+ |  errors
+ |      The error setting of the decoder or encoder.
+ |      
+ |      Subclasses should override.
+ |  
+ |  line_buffering
+ |  
+ |  name
+ |  
+ |  newlines
+ |      Line endings translated so far.
+ |      
+ |      Only line endings translated during reading are considered.
+ |      
+ |      Subclasses should override.
+ |  
+ |  write_through
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from _IOBase:
+ |  
+ |  __del__(...)
+ |  
+ |  __enter__(...)
+ |  
+ |  __exit__(...)
+ |  
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |  
+ |  readlines(self, hint=-1, /)
+ |      Return a list of lines from the stream.
+ |      
+ |      hint can be specified to control the number of lines read: no more
+ |      lines will be read if the total size (in bytes/characters) of all
+ |      lines so far exceeds hint.
+ |  
+ |  writelines(self, lines, /)
+ |      Write a list of lines to stream.
+ |      
+ |      Line separators are not added, so it is usual for each of the
+ |      lines provided to have a line separator at the end.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from _IOBase:
+ |  
+ |  __dict__
+</pre></div>
+</div>
+</div>
+</div>
+<section id="reading-text-files">
+<h2>Reading text files<a class="headerlink" href="#reading-text-files" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write code that can read in the file &#39;numbers_one_to_ten.txt&#39;</span>
+<span class="c1"># Then compute and print the sum of the numbers in the variable sum</span>
+
+<span class="nb">sum</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;numbers_one_to_ten.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+        <span class="nb">sum</span> <span class="o">+=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="nb">sum</span> <span class="o">==</span> <span class="mi">55</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="mi">55</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let us check what happens if the file you want to read does not exist</span>
+<span class="c1"># It should throw a FileNotFoundError</span>
+
+<span class="nb">open</span><span class="p">(</span><span class="s2">&quot;file_that_does_not_exist.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Let us check what happens if the file you want to read does not exist</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># It should throw a FileNotFoundError</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;file_that_does_not_exist.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/bb1000_2023/lib/python3.11/site-packages/IPython/core/interactiveshell.py:284,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">277</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">284</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;file_that_does_not_exist.txt&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will now move to a slightly more complex file format.</p>
+<p>Specifically, we will consider xyz file format, which is a format used to specify the geometry of molecules.</p>
+<p>The format of this file type is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">line</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">atoms</span>
+<span class="n">line</span> <span class="mi">2</span><span class="p">:</span> <span class="n">Title</span> <span class="n">line</span>
+<span class="n">line</span> <span class="mi">3</span><span class="p">:</span> <span class="n">Atom1</span> <span class="n">coord_x</span> <span class="n">coord_y</span> <span class="n">coord_z</span>
+<span class="n">line</span> <span class="mi">4</span><span class="p">:</span> <span class="n">Atom2</span> <span class="n">coord_x</span> <span class="n">coord_y</span> <span class="n">coord_z</span>
+<span class="o">...</span> <span class="k">continue</span> <span class="k">with</span> <span class="n">atom</span> <span class="n">entries</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">atoms</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">molecule</span>
+</pre></div>
+</div>
+<p>They have the following data types</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">line</span> <span class="mi">1</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">line</span> <span class="mi">2</span><span class="p">:</span> <span class="nb">str</span>
+<span class="n">line</span> <span class="mi">3</span><span class="p">:</span> <span class="nb">str</span> <span class="nb">float</span> <span class="nb">float</span> <span class="nb">float</span>
+<span class="n">line</span> <span class="mi">4</span><span class="p">:</span> <span class="nb">str</span> <span class="nb">float</span> <span class="nb">float</span> <span class="nb">float</span>
+<span class="o">...</span> <span class="k">continue</span> <span class="k">with</span> <span class="n">atom</span> <span class="n">entries</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">atoms</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">molecule</span>
+</pre></div>
+</div>
+<p><strong>Your task</strong>
+Read in and store the coordinates of each atom in a list and create an <code class="docutils literal notranslate"><span class="pre">atom_list</span></code> list and an <code class="docutils literal notranslate"><span class="pre">atom_coords</span></code> list of lists
+where the coordinates of each atom is a list in the list</p>
+<ul class="simple">
+<li><p>Remember to convert the coordinate values to float type which is their appropriate type</p></li>
+<li><p>In this case, you cannot just map the line to a float because line now contains multiple values</p></li>
+<li><p>One way to separate the values is by using the split() function on the line (that is, a string)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, let us try it out with an example line from the file</span>
+<span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;H1       1.2194     -0.1652      2.1600&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="c1"># So the line.split() returns a list of strings generated by splitting line at spaces (implied by the empty argument list to split).</span>
+<span class="c1"># We could define an arbitrary separator: </span>
+
+<span class="c1"># such as &quot;-&quot; </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span>
+
+<span class="c1"># Or at &quot;.&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">))</span>
+
+<span class="c1"># Or even &quot;0.1652&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;0.1652&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reading the entire file into memory: </span>
+<span class="c1"># Read the file &quot;benzene.xyz&quot; using readlines() and fill in atom_list and atom_coords</span>
+
+<span class="n">atom_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">atom_coords</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;benzene.xyz&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">string</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">atom_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">atom_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">3</span><span class="p">])])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">atom_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atom_coords</span><span class="p">)</span>
+<span class="c1">### END_SOLUTION</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">atom_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;H1&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">atom_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;H1&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">atom_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="mf">1.2194</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1652</span><span class="p">,</span> <span class="mf">2.16</span><span class="p">],</span> <span class="n">error_message</span><span class="p">(</span><span class="n">atom_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.2194</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1652</span><span class="p">,</span> <span class="mf">2.16</span><span class="p">])</span>
+<span class="k">assert</span> <span class="n">atom_list</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;H6&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">atom_list</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="s2">&quot;H6&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">atom_coords</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.4836</span><span class="p">,</span> <span class="mf">0.1021</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0204</span><span class="p">]</span> <span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">atom_coords</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.4836</span><span class="p">,</span> <span class="mf">0.1021</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0204</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reading the file line-by-line:</span>
+<span class="c1"># Read in the same file but now line-by-line and fill in atom_list and atom_coords</span>
+
+<span class="n">atom_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">atom_coords</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;benzene.xyz&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    
+    <span class="c1"># Read the two first lines without doing anything</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">string</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">atom_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">atom_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">3</span><span class="p">])])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">atom_list</span><span class="p">,</span> <span class="n">atom_coords</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">atom_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;H1&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">atom_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;H1&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">atom_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="mf">1.2194</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1652</span><span class="p">,</span> <span class="mf">2.16</span><span class="p">],</span> <span class="n">error_message</span><span class="p">(</span><span class="n">atom_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.2194</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1652</span><span class="p">,</span> <span class="mf">2.16</span><span class="p">])</span>
+<span class="k">assert</span> <span class="n">atom_list</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;H6&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">atom_list</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="s2">&quot;H6&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">atom_coords</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.4836</span><span class="p">,</span> <span class="mf">0.1021</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0204</span><span class="p">]</span> <span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">atom_coords</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.4836</span><span class="p">,</span> <span class="mf">0.1021</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0204</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now convert your read xyz code block to a read_xyz function that takes a filename as input and returns the atom_list and atom_coords lists</span>
+<span class="c1"># Check that it can properly read in the benzene.xyz file</span>
+
+<span class="k">def</span> <span class="nf">read_xyz</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads an xyz file and returns the list of atoms</span>
+<span class="sd">    and the coordinates as list of lists</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filename (str): name of the xyz file</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: atom list, coordinates</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">atom_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">atom_coords</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    
+        <span class="c1"># Read the two first lines without doing anything</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">string</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="n">atom_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">atom_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="mi">3</span><span class="p">])])</span>
+
+    <span class="k">return</span> <span class="n">atom_list</span><span class="p">,</span> <span class="n">atom_coords</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atom_list</span><span class="p">,</span> <span class="n">atom_coords</span> <span class="o">=</span> <span class="n">read_xyz</span><span class="p">(</span><span class="s1">&#39;benzene.xyz&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atom_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atom_coords</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we will consider something more complicated.</p>
+<p>We have a file that contains a lot of data, and we are only interested in a very specific part of it</p>
+<p>The file we will be dealing with is named molcas.out, which is an output from OpenMolcas (a quantum chemistry program).</p>
+<p>In other words, it is an output containing quantum-mechanical information about a molecule.</p>
+<p>We are specifically interested in knowing the electronic energies of the molecule - the number printed in the following line starting with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;::    CASPT2 Root  1     Total energy&quot;</span>
+</pre></div>
+</div>
+<p>But there can be more than one of these lines, and we are interested in all of them.</p>
+<p>In this particular case, there are nine in total. The relevant output part looks like this but is “hidden” inside a very long file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>       <span class="n">Total</span> <span class="n">XMS</span><span class="o">-</span><span class="n">CASPT2</span> <span class="n">energies</span><span class="p">:</span>
+<span class="p">::</span>    <span class="n">XMS</span><span class="o">-</span><span class="n">CASPT2</span> <span class="n">Root</span>  <span class="mi">1</span>     <span class="n">Total</span> <span class="n">energy</span><span class="p">:</span>  <span class="o">-</span><span class="mf">7664.02011873</span>
+<span class="p">::</span>    <span class="n">XMS</span><span class="o">-</span><span class="n">CASPT2</span> <span class="n">Root</span>  <span class="mi">2</span>     <span class="n">Total</span> <span class="n">energy</span><span class="p">:</span>  <span class="o">-</span><span class="mf">7663.86538263</span>
+<span class="p">::</span>    <span class="n">XMS</span><span class="o">-</span><span class="n">CASPT2</span> <span class="n">Root</span>  <span class="mi">3</span>     <span class="n">Total</span> <span class="n">energy</span><span class="p">:</span>  <span class="o">-</span><span class="mf">7663.83034100</span>
+<span class="p">::</span>    <span class="n">XMS</span><span class="o">-</span><span class="n">CASPT2</span> <span class="n">Root</span>  <span class="mi">4</span>     <span class="n">Total</span> <span class="n">energy</span><span class="p">:</span>  <span class="o">-</span><span class="mf">7663.82724336</span>
+<span class="p">::</span>    <span class="n">XMS</span><span class="o">-</span><span class="n">CASPT2</span> <span class="n">Root</span>  <span class="mi">5</span>     <span class="n">Total</span> <span class="n">energy</span><span class="p">:</span>  <span class="o">-</span><span class="mf">7663.82401120</span>
+<span class="p">::</span>    <span class="n">XMS</span><span class="o">-</span><span class="n">CASPT2</span> <span class="n">Root</span>  <span class="mi">6</span>     <span class="n">Total</span> <span class="n">energy</span><span class="p">:</span>  <span class="o">-</span><span class="mf">7663.82386506</span>
+<span class="p">::</span>    <span class="n">XMS</span><span class="o">-</span><span class="n">CASPT2</span> <span class="n">Root</span>  <span class="mi">7</span>     <span class="n">Total</span> <span class="n">energy</span><span class="p">:</span>  <span class="o">-</span><span class="mf">7663.79797706</span>
+<span class="p">::</span>    <span class="n">XMS</span><span class="o">-</span><span class="n">CASPT2</span> <span class="n">Root</span>  <span class="mi">8</span>     <span class="n">Total</span> <span class="n">energy</span><span class="p">:</span>  <span class="o">-</span><span class="mf">7663.78384205</span>
+<span class="p">::</span>    <span class="n">XMS</span><span class="o">-</span><span class="n">CASPT2</span> <span class="n">Root</span>  <span class="mi">9</span>     <span class="n">Total</span> <span class="n">energy</span><span class="p">:</span>  <span class="o">-</span><span class="mf">7663.76782714</span>
+</pre></div>
+</div>
+<p><strong>Your task</strong></p>
+<ul class="simple">
+<li><p>Write a function get_openmolcas_energies that takes the filename of a molcas file and reads the relevant energies</p></li>
+<li><p>The function should return these energies as a dictionary named <code class="docutils literal notranslate"><span class="pre">energy_dict</span></code> with <code class="docutils literal notranslate"><span class="pre">key:</span> <span class="pre">value</span></code> pairs as <code class="docutils literal notranslate"><span class="pre">root_number</span></code> (<code class="docutils literal notranslate"><span class="pre">int</span></code> 1-9) : <code class="docutils literal notranslate"><span class="pre">energy</span></code> (<code class="docutils literal notranslate"><span class="pre">float</span></code>)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_openmolcas_energies</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">:</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads OpenMolcas file and returns a </span>
+<span class="sd">    dictionary with key: value as root: XMS-CASPT2 energy</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filename (str): OpenMolcas file to read</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict[str:float]: key=root, value=XMS-CASPT2 energy</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">energy_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;XMS-CASPT2 Root&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="n">line_split</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                <span class="n">root_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line_split</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+                <span class="n">energy</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line_split</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+                <span class="n">energy_dict</span><span class="p">[</span><span class="n">root_number</span><span class="p">]</span> <span class="o">=</span> <span class="n">energy</span>
+        
+    <span class="k">return</span> <span class="n">energy_dict</span>
+
+<span class="n">energy_dict</span> <span class="o">=</span> <span class="n">get_openmolcas_energies</span><span class="p">(</span><span class="s2">&quot;molcas.out&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">energy_dict</span><span class="p">)</span>       
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">energy_dict</span><span class="p">)</span> <span class="o">==</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">energy_dict</span><span class="p">),</span> <span class="nb">dict</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">energy_dict</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mf">7664.02011873</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">energy_dict</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mf">7664.02011873</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">energy_dict</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mf">7663.8240112</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">energy_dict</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="o">-</span><span class="mf">7663.8240112</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="writing-files">
+<h2>Writing files<a class="headerlink" href="#writing-files" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write a file analogous to numbers_one_to_ten.txt</span>
+<span class="c1"># Use the name numbers_one_to_ten_NEW.txt</span>
+<span class="c1"># Remember to change to write mode by using &#39;w&#39;</span>
+<span class="c1"># Also remember to insert new line character &quot;\n&quot; </span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;numbers_one_to_ten_NEW.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You already heard about the xyz file format. Let us now try to write a file of xyz format</span>
+
+<span class="c1"># Write a function write_xyz that:</span>
+<span class="c1"># - takes a filename as input a title line, a list of atoms (atom_list) and a list of lists of coordinates (atom_coords) </span>
+<span class="c1"># - and writes the coordinates to file in xyz format.</span>
+<span class="c1">#</span>
+<span class="c1"># As example, use the atom_list and atom_coords for caffeine (the compound giving the awakening effect of coffee) given below. Let the file be named &quot;caffeine.xyz&quot;</span>
+<span class="n">atom_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;N1&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="s2">&quot;N3&quot;</span><span class="p">,</span> <span class="s2">&quot;C4&quot;</span><span class="p">,</span> <span class="s2">&quot;C5&quot;</span><span class="p">,</span> <span class="s2">&quot;C6&quot;</span><span class="p">,</span> <span class="s2">&quot;N7&quot;</span><span class="p">,</span> <span class="s2">&quot;C8&quot;</span><span class="p">,</span> <span class="s2">&quot;N9&quot;</span><span class="p">,</span> <span class="s2">&quot;C10&quot;</span><span class="p">,</span> <span class="s2">&quot;O11&quot;</span><span class="p">,</span> <span class="s2">&quot;O12&quot;</span><span class="p">,</span> <span class="s2">&quot;C13&quot;</span><span class="p">,</span> <span class="s2">&quot;C14&quot;</span><span class="p">,</span> <span class="s2">&quot;H15&quot;</span><span class="p">,</span> <span class="s2">&quot;H16&quot;</span><span class="p">,</span> <span class="s2">&quot;H17&quot;</span><span class="p">,</span> <span class="s2">&quot;H18&quot;</span><span class="p">,</span> <span class="s2">&quot;H19&quot;</span><span class="p">,</span> <span class="s2">&quot;H20&quot;</span><span class="p">,</span> <span class="s2">&quot;H21&quot;</span><span class="p">,</span> <span class="s2">&quot;H22&quot;</span><span class="p">,</span> <span class="s2">&quot;H23&quot;</span><span class="p">,</span> <span class="s2">&quot;H24&quot;</span><span class="p">]</span>
+<span class="n">atom_coords</span> <span class="o">=</span> <span class="p">[[</span> <span class="mf">1.5808</span><span class="p">,</span> <span class="mf">0.7027</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2279</span><span class="p">],</span> <span class="p">[</span> <span class="mf">1.7062</span><span class="p">,</span><span class="o">-</span><span class="mf">0.7374</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2126</span><span class="p">],</span> <span class="p">[</span> <span class="mf">0.5340</span><span class="p">,</span><span class="o">-</span><span class="mf">1.5671</span><span class="p">,</span><span class="o">-</span><span class="mf">0.3503</span><span class="p">],</span> <span class="p">[</span> <span class="mf">0.3231</span><span class="p">,</span> <span class="mf">1.3600</span><span class="p">,</span> <span class="mf">0.0274</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.8123</span><span class="p">,</span> <span class="mf">0.4553</span><span class="p">,</span> <span class="mf">0.0817</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.6967</span><span class="p">,</span><span class="o">-</span><span class="mf">0.9322</span><span class="p">,</span><span class="o">-</span><span class="mf">0.0662</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.1886</span><span class="p">,</span> <span class="mf">0.6990</span><span class="p">,</span> <span class="mf">0.2783</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.8512</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5205</span><span class="p">,</span> <span class="mf">0.2532</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.9537</span><span class="p">,</span><span class="o">-</span><span class="mf">1.5188</span><span class="p">,</span> <span class="mf">0.0426</span><span class="p">],</span> <span class="p">[</span> <span class="mf">0.6568</span><span class="p">,</span><span class="o">-</span><span class="mf">3.0274</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1675</span><span class="p">],</span> <span class="p">[</span> <span class="mf">2.8136</span><span class="p">,</span><span class="o">-</span><span class="mf">1.2558</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1693</span><span class="p">],</span> <span class="p">[</span> <span class="mf">0.2849</span><span class="p">,</span> <span class="mf">2.5744</span><span class="p">,</span> <span class="mf">0.1591</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.8096</span><span class="p">,</span> <span class="mf">2.0031</span><span class="p">,</span> <span class="mf">0.5032</span><span class="p">],</span> <span class="p">[</span> <span class="mf">2.8301</span><span class="p">,</span> <span class="mf">1.5004</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1968</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.9271</span><span class="p">,</span><span class="o">-</span><span class="mf">0.6787</span><span class="p">,</span> <span class="mf">0.3762</span><span class="p">],</span> <span class="p">[</span> <span class="mf">1.4823</span><span class="p">,</span><span class="o">-</span><span class="mf">3.4046</span><span class="p">,</span><span class="o">-</span><span class="mf">0.7865</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.2708</span><span class="p">,</span><span class="o">-</span><span class="mf">3.5204</span><span class="p">,</span><span class="o">-</span><span class="mf">0.4868</span><span class="p">],</span> <span class="p">[</span> <span class="mf">0.8567</span><span class="p">,</span><span class="o">-</span><span class="mf">3.2990</span><span class="p">,</span> <span class="mf">0.8788</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.4123</span><span class="p">,</span> <span class="mf">2.7478</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2017</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.6042</span><span class="p">,</span> <span class="mf">2.3621</span><span class="p">,</span> <span class="mf">1.5221</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.8973</span><span class="p">,</span> <span class="mf">1.9344</span><span class="p">,</span> <span class="mf">0.3695</span><span class="p">],</span> <span class="p">[</span> <span class="mf">3.5959</span><span class="p">,</span> <span class="mf">1.0333</span><span class="p">,</span><span class="o">-</span><span class="mf">0.8314</span><span class="p">],</span> <span class="p">[</span> <span class="mf">3.2249</span><span class="p">,</span> <span class="mf">1.5791</span><span class="p">,</span> <span class="mf">0.8255</span><span class="p">],</span> <span class="p">[</span> <span class="mf">2.6431</span><span class="p">,</span> <span class="mf">2.5130</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5793</span><span class="p">]]</span> 
+
+<span class="k">def</span> <span class="nf">write_xyz</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">atom_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">atom_coords</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Writes an xyz file name filename for the molecule defined</span>
+<span class="sd">    by the atom_list and atom_coords    </span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filename (str): name of the xyz file to be written</span>
+<span class="sd">        title (str): title line to be printed in the header</span>
+<span class="sd">        atom_list (list[str]): list of atoms</span>
+<span class="sd">        atom_coords (list): list of lists of atom coordinates</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        
+        <span class="n">number_of_atoms</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">atom_list</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">number_of_atoms</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">title</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">atom</span><span class="p">,</span> <span class="n">coords</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">atom_list</span><span class="p">,</span> <span class="n">atom_coords</span><span class="p">):</span>
+            
+            <span class="n">string</span> <span class="o">+=</span> <span class="n">atom</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+    
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You should now be able to run and get the caffeine.xyz file written </span>
+<span class="n">write_xyz</span><span class="p">(</span><span class="s2">&quot;caffeine.xyz&quot;</span><span class="p">,</span> <span class="s2">&quot;caffeine&quot;</span><span class="p">,</span> <span class="n">atom_list</span><span class="p">,</span> <span class="n">atom_coords</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="remember-to-always-check-your-output-here-the-file-one-way-to-do-that-is-to-read-it-back-in-and-print-it">
+<h3>Remember to always check your output (here the file). One way to do that is to read it back in and print it.<a class="headerlink" href="#remember-to-always-check-your-output-here-the-file-one-way-to-do-that-is-to-read-it-back-in-and-print-it" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="formatted-strings">
+<h2>Formatted strings<a class="headerlink" href="#formatted-strings" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>With the simplest implementation, the “caffeine.xyz” file will look very unordered.</p></li>
+<li><p>While this may not be a problem for the read function (sometimes it is – it depends on the format assumptions made in the read function), it is very unpleasing to look at.</p></li>
+<li><p>So, let us now touch a bit on how to format a string in a nicer way.</p></li>
+</ul>
+<p><strong>NOTE: The formatting style you will learn below assumes Python 3</strong></p>
+<ul class="simple">
+<li><p>An <code class="docutils literal notranslate"><span class="pre">f</span></code> in front of a string means that the string is fancier formatted. See more <a class="reference external" href="https://docs.python.org/3/tutorial/inputoutput.html">here</a></p></li>
+<li><p>This means that you can use variable names directly in the string expression by encapsulating them in <code class="docutils literal notranslate"><span class="pre">{}</span></code></p></li>
+</ul>
+<p>Take the following formatted string:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">variable1</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
+<span class="n">variable2</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;I am variable1 </span><span class="si">{</span><span class="n">variable1</span><span class="si">}</span><span class="s2"> and I am variable2 </span><span class="si">{</span><span class="n">variable2</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">am</span> <span class="n">variable1</span> <span class="n">Hello</span> <span class="ow">and</span> <span class="n">I</span> <span class="n">am</span> <span class="n">variable2</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>We can format even more inside the <code class="docutils literal notranslate"><span class="pre">{}</span></code>.
+For example, if I have a variable name of type float and want to print it with 12 digits and 6 decimal places, I can do the following</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14159265359</span>
+
+<span class="n">string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;PI is approx. </span><span class="si">{</span><span class="n">PI</span><span class="si">:</span><span class="s2">12.6f</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which gives</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PI</span> <span class="ow">is</span> <span class="n">approx</span><span class="o">.</span>     <span class="mf">3.141593</span>
+</pre></div>
+</div>
+<p>Here the <code class="docutils literal notranslate"><span class="pre">:</span></code> inside <code class="docutils literal notranslate"><span class="pre">{}</span></code> indicates that you will format the variable output.</p>
+<ul class="simple">
+<li><p>Floats: <code class="docutils literal notranslate"><span class="pre">:&lt;number</span> <span class="pre">of</span> <span class="pre">digits&gt;.&lt;number</span> <span class="pre">of</span> <span class="pre">decimal</span> <span class="pre">places&gt;f</span></code></p></li>
+<li><p>Integers: <code class="docutils literal notranslate"><span class="pre">:&lt;number</span> <span class="pre">of</span> <span class="pre">digits&gt;d</span></code></p></li>
+<li><p>Strings: <code class="docutils literal notranslate"><span class="pre">:&lt;number</span> <span class="pre">of</span> <span class="pre">characters&gt;s</span></code></p></li>
+</ul>
+<p>There are many, many more options. You need to study these yourself.
+Start by reading section “Format Specification Mini-Language”</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/string.html#format-string-syntax">https://docs.python.org/3/library/string.html#format-string-syntax</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Time for you to try it out</span>
+
+<span class="c1"># Example data</span>
+<span class="n">fish_string</span> <span class="o">=</span> <span class="s2">&quot;fish&quot;</span>
+<span class="n">number_int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">atom_str</span> <span class="o">=</span> <span class="s2">&quot;H1&quot;</span>
+<span class="n">number_float1</span> <span class="o">=</span> <span class="mf">4.65432853</span>
+<span class="n">number_float2</span> <span class="o">=</span> <span class="mf">1.54639524</span>
+<span class="n">number_float3</span> <span class="o">=</span> <span class="mf">0.53856743</span>
+
+<span class="c1"># Define a string (named string) containing the fish_string twice each taking a 10 character space</span>
+<span class="n">string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fish_string</span><span class="si">:</span><span class="s2">10s</span><span class="si">}{</span><span class="n">fish_string</span><span class="si">:</span><span class="s2">10s</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">string</span> <span class="o">==</span> <span class="s2">&quot;fish      fish      &quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="s2">&quot;fish      fish      &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a string named string containing three times number_int taking up 4 digit space</span>
+<span class="n">string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">number_int</span><span class="si">:</span><span class="s2">4d</span><span class="si">}{</span><span class="n">number_int</span><span class="si">:</span><span class="s2">4d</span><span class="si">}{</span><span class="n">number_int</span><span class="si">:</span><span class="s2">4d</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">string</span> <span class="o">==</span> <span class="s2">&quot;   4   4   4&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="s2">&quot;   4   4   4&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a string named string that contains</span>
+<span class="c1"># - the atom_str with 4 character spaces </span>
+<span class="c1"># - and then the three number_float variables with 10 digits and 5 decimal places</span>
+
+<span class="c1"># This will be all you need to get a nice output for your xyz writer</span>
+
+<span class="n">string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">atom_str</span><span class="si">:</span><span class="s2">4s</span><span class="si">}{</span><span class="n">number_float1</span><span class="si">:</span><span class="s2">10.5f</span><span class="si">}{</span><span class="n">number_float2</span><span class="si">:</span><span class="s2">10.5f</span><span class="si">}{</span><span class="n">number_float3</span><span class="si">:</span><span class="s2">10.5f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">string</span> <span class="o">==</span> <span class="s2">&quot;H1     4.65433   1.54640   0.53857&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="s2">&quot;H1     4.65433   1.54640   0.53857&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="your-task">
+<h3>Your task:<a class="headerlink" href="#your-task" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Modify your <code class="docutils literal notranslate"><span class="pre">write_xyz</span></code> function from above to write in a nicely formatted output</p></li>
+<li><p>The output xyz file should be named <code class="docutils literal notranslate"><span class="pre">caffeine_NICE.xyz</span></code></p></li>
+</ul>
+<p>You can for instance use <code class="docutils literal notranslate"><span class="pre">{:4s}{:20.10f}{:20.10f}{:20.10f}</span></code>
+which should give you the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">24</span>
+<span class="n">caffeine</span>
+<span class="n">N1</span>          <span class="mf">1.5808000000</span>        <span class="mf">0.7027000000</span>       <span class="o">-</span><span class="mf">0.2279000000</span>
+<span class="n">C2</span>          <span class="mf">1.7062000000</span>       <span class="o">-</span><span class="mf">0.7374000000</span>       <span class="o">-</span><span class="mf">0.2126000000</span>
+<span class="n">N3</span>          <span class="mf">0.5340000000</span>       <span class="o">-</span><span class="mf">1.5671000000</span>       <span class="o">-</span><span class="mf">0.3503000000</span>
+<span class="n">C4</span>          <span class="mf">0.3231000000</span>        <span class="mf">1.3600000000</span>        <span class="mf">0.0274000000</span>
+<span class="n">C5</span>         <span class="o">-</span><span class="mf">0.8123000000</span>        <span class="mf">0.4553000000</span>        <span class="mf">0.0817000000</span>
+<span class="n">C6</span>         <span class="o">-</span><span class="mf">0.6967000000</span>       <span class="o">-</span><span class="mf">0.9322000000</span>       <span class="o">-</span><span class="mf">0.0662000000</span>
+<span class="n">N7</span>         <span class="o">-</span><span class="mf">2.1886000000</span>        <span class="mf">0.6990000000</span>        <span class="mf">0.2783000000</span>
+<span class="n">C8</span>         <span class="o">-</span><span class="mf">2.8512000000</span>       <span class="o">-</span><span class="mf">0.5205000000</span>        <span class="mf">0.2532000000</span>
+<span class="n">N9</span>         <span class="o">-</span><span class="mf">1.9537000000</span>       <span class="o">-</span><span class="mf">1.5188000000</span>        <span class="mf">0.0426000000</span>
+<span class="n">C10</span>         <span class="mf">0.6568000000</span>       <span class="o">-</span><span class="mf">3.0274000000</span>       <span class="o">-</span><span class="mf">0.1675000000</span>
+<span class="n">O11</span>         <span class="mf">2.8136000000</span>       <span class="o">-</span><span class="mf">1.2558000000</span>       <span class="o">-</span><span class="mf">0.1693000000</span>
+<span class="n">O12</span>         <span class="mf">0.2849000000</span>        <span class="mf">2.5744000000</span>        <span class="mf">0.1591000000</span>
+<span class="n">C13</span>        <span class="o">-</span><span class="mf">2.8096000000</span>        <span class="mf">2.0031000000</span>        <span class="mf">0.5032000000</span>
+<span class="n">C14</span>         <span class="mf">2.8301000000</span>        <span class="mf">1.5004000000</span>       <span class="o">-</span><span class="mf">0.1968000000</span>
+<span class="n">H15</span>        <span class="o">-</span><span class="mf">3.9271000000</span>       <span class="o">-</span><span class="mf">0.6787000000</span>        <span class="mf">0.3762000000</span>
+<span class="n">H16</span>         <span class="mf">1.4823000000</span>       <span class="o">-</span><span class="mf">3.4046000000</span>       <span class="o">-</span><span class="mf">0.7865000000</span>
+<span class="n">H17</span>        <span class="o">-</span><span class="mf">0.2708000000</span>       <span class="o">-</span><span class="mf">3.5204000000</span>       <span class="o">-</span><span class="mf">0.4868000000</span>
+<span class="n">H18</span>         <span class="mf">0.8567000000</span>       <span class="o">-</span><span class="mf">3.2990000000</span>        <span class="mf">0.8788000000</span>
+<span class="n">H19</span>        <span class="o">-</span><span class="mf">2.4123000000</span>        <span class="mf">2.7478000000</span>       <span class="o">-</span><span class="mf">0.2017000000</span>
+<span class="n">H20</span>        <span class="o">-</span><span class="mf">2.6042000000</span>        <span class="mf">2.3621000000</span>        <span class="mf">1.5221000000</span>
+<span class="n">H21</span>        <span class="o">-</span><span class="mf">3.8973000000</span>        <span class="mf">1.9344000000</span>        <span class="mf">0.3695000000</span>
+<span class="n">H22</span>         <span class="mf">3.5959000000</span>        <span class="mf">1.0333000000</span>       <span class="o">-</span><span class="mf">0.8314000000</span>
+<span class="n">H23</span>         <span class="mf">3.2249000000</span>        <span class="mf">1.5791000000</span>        <span class="mf">0.8255000000</span>
+<span class="n">H24</span>         <span class="mf">2.6431000000</span>        <span class="mf">2.5130000000</span>       <span class="o">-</span><span class="mf">0.5793000000</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atom_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;N1&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="s2">&quot;N3&quot;</span><span class="p">,</span> <span class="s2">&quot;C4&quot;</span><span class="p">,</span> <span class="s2">&quot;C5&quot;</span><span class="p">,</span> <span class="s2">&quot;C6&quot;</span><span class="p">,</span> <span class="s2">&quot;N7&quot;</span><span class="p">,</span> <span class="s2">&quot;C8&quot;</span><span class="p">,</span> <span class="s2">&quot;N9&quot;</span><span class="p">,</span> <span class="s2">&quot;C10&quot;</span><span class="p">,</span> <span class="s2">&quot;O11&quot;</span><span class="p">,</span> <span class="s2">&quot;O12&quot;</span><span class="p">,</span> <span class="s2">&quot;C13&quot;</span><span class="p">,</span> <span class="s2">&quot;C14&quot;</span><span class="p">,</span> <span class="s2">&quot;H15&quot;</span><span class="p">,</span> <span class="s2">&quot;H16&quot;</span><span class="p">,</span> <span class="s2">&quot;H17&quot;</span><span class="p">,</span> <span class="s2">&quot;H18&quot;</span><span class="p">,</span> <span class="s2">&quot;H19&quot;</span><span class="p">,</span> <span class="s2">&quot;H20&quot;</span><span class="p">,</span> <span class="s2">&quot;H21&quot;</span><span class="p">,</span> <span class="s2">&quot;H22&quot;</span><span class="p">,</span> <span class="s2">&quot;H23&quot;</span><span class="p">,</span> <span class="s2">&quot;H24&quot;</span><span class="p">]</span>
+<span class="n">atom_coords</span> <span class="o">=</span> <span class="p">[[</span> <span class="mf">1.5808</span><span class="p">,</span> <span class="mf">0.7027</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2279</span><span class="p">],</span> <span class="p">[</span> <span class="mf">1.7062</span><span class="p">,</span><span class="o">-</span><span class="mf">0.7374</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2126</span><span class="p">],</span> <span class="p">[</span> <span class="mf">0.5340</span><span class="p">,</span><span class="o">-</span><span class="mf">1.5671</span><span class="p">,</span><span class="o">-</span><span class="mf">0.3503</span><span class="p">],</span> <span class="p">[</span> <span class="mf">0.3231</span><span class="p">,</span> <span class="mf">1.3600</span><span class="p">,</span> <span class="mf">0.0274</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.8123</span><span class="p">,</span> <span class="mf">0.4553</span><span class="p">,</span> <span class="mf">0.0817</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.6967</span><span class="p">,</span><span class="o">-</span><span class="mf">0.9322</span><span class="p">,</span><span class="o">-</span><span class="mf">0.0662</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.1886</span><span class="p">,</span> <span class="mf">0.6990</span><span class="p">,</span> <span class="mf">0.2783</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.8512</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5205</span><span class="p">,</span> <span class="mf">0.2532</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.9537</span><span class="p">,</span><span class="o">-</span><span class="mf">1.5188</span><span class="p">,</span> <span class="mf">0.0426</span><span class="p">],</span> <span class="p">[</span> <span class="mf">0.6568</span><span class="p">,</span><span class="o">-</span><span class="mf">3.0274</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1675</span><span class="p">],</span> <span class="p">[</span> <span class="mf">2.8136</span><span class="p">,</span><span class="o">-</span><span class="mf">1.2558</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1693</span><span class="p">],</span> <span class="p">[</span> <span class="mf">0.2849</span><span class="p">,</span> <span class="mf">2.5744</span><span class="p">,</span> <span class="mf">0.1591</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.8096</span><span class="p">,</span> <span class="mf">2.0031</span><span class="p">,</span> <span class="mf">0.5032</span><span class="p">],</span> <span class="p">[</span> <span class="mf">2.8301</span><span class="p">,</span> <span class="mf">1.5004</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1968</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.9271</span><span class="p">,</span><span class="o">-</span><span class="mf">0.6787</span><span class="p">,</span> <span class="mf">0.3762</span><span class="p">],</span> <span class="p">[</span> <span class="mf">1.4823</span><span class="p">,</span><span class="o">-</span><span class="mf">3.4046</span><span class="p">,</span><span class="o">-</span><span class="mf">0.7865</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.2708</span><span class="p">,</span><span class="o">-</span><span class="mf">3.5204</span><span class="p">,</span><span class="o">-</span><span class="mf">0.4868</span><span class="p">],</span> <span class="p">[</span> <span class="mf">0.8567</span><span class="p">,</span><span class="o">-</span><span class="mf">3.2990</span><span class="p">,</span> <span class="mf">0.8788</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.4123</span><span class="p">,</span> <span class="mf">2.7478</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2017</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.6042</span><span class="p">,</span> <span class="mf">2.3621</span><span class="p">,</span> <span class="mf">1.5221</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.8973</span><span class="p">,</span> <span class="mf">1.9344</span><span class="p">,</span> <span class="mf">0.3695</span><span class="p">],</span> <span class="p">[</span> <span class="mf">3.5959</span><span class="p">,</span> <span class="mf">1.0333</span><span class="p">,</span><span class="o">-</span><span class="mf">0.8314</span><span class="p">],</span> <span class="p">[</span> <span class="mf">3.2249</span><span class="p">,</span> <span class="mf">1.5791</span><span class="p">,</span> <span class="mf">0.8255</span><span class="p">],</span> <span class="p">[</span> <span class="mf">2.6431</span><span class="p">,</span> <span class="mf">2.5130</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5793</span><span class="p">]]</span> 
+
+<span class="k">def</span> <span class="nf">write_xyz</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">atom_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">atom_coords</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Writes an xyz file name filename for the molecule defined</span>
+<span class="sd">    by the atom_list and atom_coords    </span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filename (str): name of the xyz file to be written</span>
+<span class="sd">        title (str): title line to be printed in the header</span>
+<span class="sd">        atom_list (list[str]): list of atoms</span>
+<span class="sd">        atom_coords (list): list of lists of atom coordinates</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        
+        <span class="n">number_of_atoms</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">atom_list</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">number_of_atoms</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">title</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">atom</span><span class="p">,</span> <span class="n">coords</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">atom_list</span><span class="p">,</span> <span class="n">atom_coords</span><span class="p">):</span>
+            
+            <span class="n">string</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">atom</span><span class="si">:</span><span class="s2">4s</span><span class="si">}{</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">20.10f</span><span class="si">}{</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">20.10f</span><span class="si">}{</span><span class="n">coords</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">20.10f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+    
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">write_xyz</span><span class="p">(</span><span class="s2">&quot;caffeine_NICE.xyz&quot;</span><span class="p">,</span> <span class="s2">&quot;caffeine&quot;</span><span class="p">,</span> <span class="n">atom_list</span><span class="p">,</span> <span class="n">atom_coords</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Again you should always check the output</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="reading-and-writing-standard-file-formats">
+<h2>Reading and writing standard file formats<a class="headerlink" href="#reading-and-writing-standard-file-formats" title="Permalink to this headline">#</a></h2>
+<p>As with many other things, there are a wealth of Python modules that can deal with read/write of standard file formats.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p>CSV files (<code class="docutils literal notranslate"><span class="pre">.csv</span></code>) – <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">csv</span></code> – <a class="reference external" href="https://docs.python.org/3/library/csv.html">More about csv</a></p></li>
+<li><p>JSON files (<code class="docutils literal notranslate"><span class="pre">.json</span></code>) - <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">json</span></code>- <a class="reference external" href="https://docs.python.org/3/library/json.html">More about json</a></p></li>
+<li><p>YAML files (<code class="docutils literal notranslate"><span class="pre">.yaml</span></code>) - <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">yaml</span></code> - <a class="reference external" href="https://pyyaml.org/wiki/PyYAMLDocumentation">More about yaml</a></p></li>
+</ul>
+<p>We will not go through these but I recommend you to have a look: using standard file format is preferable when possible.</p>
+</section>
+<section id="command-line-parsing-with-argparse">
+<h2>Command-line parsing with argparse<a class="headerlink" href="#command-line-parsing-with-argparse" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">argparse</span></code> module is intended to write user-friendly command-line interfaces to Python programs. Check out <a class="reference external" href="https://docs.python.org/3/library/argparse.html">this link</a>.</p>
+<p>It may become handy in one of the project assignments.</p>
+<p>The module is build around an instance of the <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">argparse.ArgumentParser</span></code>, which is nothing but a container for input argument specifications.</p>
+<p>First, we need to talk a bit about arguments.</p>
+<ul class="simple">
+<li><p>An argument is a value that is accepted by a Python function or the parser (in this case).</p></li>
+<li><p>This value becomes its own Python value when used in the function.</p></li>
+</ul>
+<p><strong>Two different types of arguments</strong></p>
+<ul class="simple">
+<li><p>Positional – required arguments that come in positional order (AND ARE ALWAYS LISTED BEFORE OPTIONAL ARGUMENTS!).</p></li>
+<li><p>Optional - not required because the parameters underlying this argument has a default value (If not explicitly set in argparse using the <code class="docutils literal notranslate"><span class="pre">default</span></code> keyword, it will be set to <code class="docutils literal notranslate"><span class="pre">None</span></code>). If no argument is given, the program will use the default</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We start by importing the module</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="c1"># Then we initialize an instance of the argparse.ArgumentParser class</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;&lt;name of your program&gt;&#39;</span><span class="p">,</span>
+                    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;What the program does&#39;</span><span class="p">,</span>
+                    <span class="n">epilog</span><span class="o">=</span><span class="s1">&#39;Text at the bottom of help&#39;</span><span class="p">)</span>
+
+<span class="c1"># Step 1 is to define the input arguments</span>
+
+<span class="c1"># First, we put any positional arguments</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;filename&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The input file&quot;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">)</span>
+
+<span class="c1"># Then any optional arguments (-X single-character argument, --xxxxxxx multicharacter argument)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-n&quot;</span><span class="p">,</span> <span class="s2">&quot;--nstudents&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The number of students&quot;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We then need to run the parse_args() method of the object to get the parser object to correctly interpret the extracted data</span>
+<span class="c1"># args = parser.parse_args() &lt;------------- THIS IS HOW TO RUN IT IN A PYTHON SCRIPT FILE</span>
+
+<span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">([</span><span class="s2">&quot;test.csv&quot;</span><span class="p">])</span> <span class="c1">#&lt;------------To make this work in a Jupyter Notebook (where we cannot provide arguments as usual), we provide a list of input strings instead</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The parser object stores the inputs in the filename and nstudents data attributes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">nstudents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">([</span><span class="s2">&quot;test.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;-n 5&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The parser object stores the inputs in the filename and nstudents data attributes. This time nstudents is not None</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">nstudents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./session5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../session4/4_compound_datatypes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 4 - Compound data types</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../session6/6_classes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 6 - Classes in Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-text-files">Reading text files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-files">Writing files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remember-to-always-check-your-output-here-the-file-one-way-to-do-that-is-to-read-it-back-in-and-print-it">Remember to always check your output (here the file). One way to do that is to read it back in and print it.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatted-strings">Formatted strings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-task">Your task:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-standard-file-formats">Reading and writing standard file formats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line-parsing-with-argparse">Command-line parsing with argparse</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nanna Holmgaard List
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
