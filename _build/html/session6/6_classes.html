@@ -1,0 +1,1122 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Lecture 6 - Classes in Python &#8212; Programming in Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'session6/6_classes';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to matplotlib" href="../matplotlib/matplotlib_exercises.html" />
+    <link rel="prev" title="Lecture 5 - Input/output" href="../session5/5_input_output.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CANVAS_figure.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/CANVAS_figure.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    PythonProgramming - Exercises
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../session01/1_simple_datatypes.html">Lecture 0 - Simple data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session01/2_simple_datatypes.html">Lecture 1 - Data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session2/2_flowcontrol.html">Lecture 2 - Flow control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session3/3_functions.html">Lecture 3 - Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session4/4_compound_datatypes.html">Lecture 4 - Compound data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session5/5_input_output.html">Lecture 5 - Input/output</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 6 - Classes in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/matplotlib_exercises.html">Introduction to matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/numpy_exercises.html">Introduction to NumPy - Numerical Python</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsession6/6_classes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/session6/6_classes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 6 - Classes in Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-create-a-class-for-a-three-dimensional-vector">A. Create a class for a three-dimensional vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-for-currency-data-storage">Class for currency data storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inheritance-parent-and-child-classes">Inheritance, parent and child classes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define helper function</span>
+<span class="kn">from</span> <span class="nn">pytest</span> <span class="kn">import</span> <span class="n">approx</span>
+<span class="k">def</span> <span class="nf">error_message</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Actual </span><span class="si">{</span><span class="n">actual</span><span class="si">}</span><span class="s1"> != Expected </span><span class="si">{</span><span class="n">expected</span><span class="si">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-6-classes-in-python">
+<h1>Lecture 6 - Classes in Python<a class="headerlink" href="#lecture-6-classes-in-python" title="Permalink to this headline">#</a></h1>
+<p><strong>REMEMBER:</strong></p>
+<ul class="simple">
+<li><p>use getter/setter or decorators for good coding practice</p></li>
+<li><p>use single leading underscore to indicate attributes/methods for internal use</p></li>
+</ul>
+<p><strong>Initialization of a class</strong></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExampleClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">&lt;</span><span class="nb">list</span> <span class="n">of</span> <span class="n">parameters</span><span class="o">&gt;</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p><strong>Attributes:</strong></p>
+<ul class="simple">
+<li><p>Class attributes: common among all instances of the object - if class attribute is changed in one, it will affect all other.</p>
+<ul>
+<li><p>Defined above <code class="docutils literal notranslate"><span class="pre">__init__</span></code></p></li>
+</ul>
+</li>
+<li><p>Instance attributes: specific to a given instance</p>
+<ul>
+<li><p>Defined in <code class="docutils literal notranslate"><span class="pre">__init__</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Methods:</strong></p>
+<ul class="simple">
+<li><p>instance method(<code class="docutils literal notranslate"><span class="pre">self,</span> <span class="pre">arguments</span></code>): a method that can access both class and instance attributes</p></li>
+<li><p>class method(<code class="docutils literal notranslate"><span class="pre">cls,</span> <span class="pre">arguments</span></code>): can access the class (via cls) but cannot access the instance (via self). Use <code class="docutils literal notranslate"><span class="pre">&#64;classmethod</span></code> decorator</p></li>
+<li><p>static method is a function in a class that is like an ordinary function, that does not depend on any instance (no self argument). Use <code class="docutils literal notranslate"><span class="pre">&#64;staticmethod</span></code> decorator</p></li>
+</ul>
+<section id="a-create-a-class-for-a-three-dimensional-vector">
+<h2>A. Create a class for a three-dimensional vector<a class="headerlink" href="#a-create-a-class-for-a-three-dimensional-vector" title="Permalink to this headline">#</a></h2>
+<p>Create a class for storing a 3D vector (x, y, z coordinates), and which provides a set of functions for manipulating the coordinates.</p>
+<p>The class Vector3D should have the following properties:</p>
+<ul class="simple">
+<li><p>Instance attributes</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> stores x coordinate (object attribute)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> stores y coordinate (object attribute)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">z</span></code> stores z coordinate (object attribute)</p></li>
+</ul>
+</li>
+<li><p>Ordinary class methods</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">length()</span></code>                  : compute length of vector*</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">normalize()</span></code>               : normalize vector to unit length vector*</p>
+<ul>
+<li><p>for square root use math.sqrt function from math library</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Overloaded operations (special/magic methods)</p>
+<ul>
+<li><p>addition operator(<code class="docutils literal notranslate"><span class="pre">+</span></code>)      : implement <code class="docutils literal notranslate"><span class="pre">__add__</span></code> method to return a new vector as the sum of the two vectors</p></li>
+<li><p>substraction operator(<code class="docutils literal notranslate"><span class="pre">-</span></code>)  : implement <code class="docutils literal notranslate"><span class="pre">__sub__</span></code> method to return a new vector as difference of the two vectors</p></li>
+<li><p>compare two vectors (<code class="docutils literal notranslate"><span class="pre">==</span></code>)  : implement <code class="docutils literal notranslate"><span class="pre">__eq__</span></code> method to compare (coordinate by coordinate) the vector to another</p></li>
+<li><p>str method                : implement <code class="docutils literal notranslate"><span class="pre">__str__</span></code>method to make a nice print statement for the vector</p></li>
+</ul>
+</li>
+<li><p>Static class method</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">zerovector()</span></code>              : instantiate a zero vector</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing the math library</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># Fill in the Vector3D class</span>
+
+<span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    3D vector class</span>
+<span class="sd">    </span>
+<span class="sd">    instance attributes:</span>
+<span class="sd">        _x (float)</span>
+<span class="sd">        _y (float)</span>
+<span class="sd">        _z (float)</span>
+<span class="sd">    </span>
+<span class="sd">    class methods:</span>
+<span class="sd">        length (float): returns Euclidean 2-norm of vector</span>
+<span class="sd">        normalize (None): scales coordinates so that resulting vector has length 1</span>
+<span class="sd">        __add__ (Vector3D) returns new vector as vector sum of two vectors</span>
+<span class="sd">        __sub__ (Vector3D) returns new vector as vector difference of two vectors</span>
+<span class="sd">        __str__: string representation of vector</span>
+
+<span class="sd">    static method:</span>
+<span class="sd">        zerovec (Vector3D): returns a zero vector</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="n">y</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">z</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span>
+    
+    <span class="nd">@x</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_x</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">new_x</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span>
+    
+    <span class="nd">@y</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="n">new_y</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z</span>
+    
+    <span class="nd">@z</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_z</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">new_z</span>
+
+    <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+        <span class="n">nfact</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">*=</span> <span class="n">nfact</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">*=</span> <span class="n">nfact</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">*=</span> <span class="n">nfact</span>
+        
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_x</span> 
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_y</span> 
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_z</span>
+        <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+            
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">_x</span> 
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">_y</span> 
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">_z</span>
+        <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_x</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_y</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_z</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Vector3D(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_z</span><span class="si">}</span><span class="s1">)&#39;</span>
+    
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">zerovec</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify Vector3D constructor</span>
+<span class="n">vector</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">vector</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">vector</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">vector</span><span class="o">.</span><span class="n">z</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify length method in Vector3D class </span>
+<span class="n">vector</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">vector</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">21</span><span class="p">)),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">21</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify normalize method in Vector3D class </span>
+<span class="n">vector</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+
+<span class="n">vector</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+
+<span class="k">assert</span> <span class="n">vector</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">length</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Verify addition operator for two vectors </span>
+<span class="n">avector</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="n">bvector</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+
+<span class="n">cvector</span> <span class="o">=</span> <span class="n">avector</span> <span class="o">+</span> <span class="n">bvector</span>
+
+<span class="k">assert</span> <span class="n">cvector</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mf">3.0</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">cvector</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">cvector</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mf">5.3</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">cvector</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">cvector</span><span class="o">.</span><span class="n">z</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mf">4.9</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">cvector</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="mf">4.9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Verify substraction operator for two vectors </span>
+<span class="n">avector</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="n">bvector</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+
+<span class="n">cvector</span> <span class="o">=</span> <span class="n">avector</span> <span class="o">-</span> <span class="n">bvector</span>
+
+<span class="k">assert</span> <span class="n">cvector</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">cvector</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">cvector</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mf">1.8</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">cvector</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">cvector</span><span class="o">.</span><span class="n">z</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mf">3.1</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">cvector</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Verify comparison of two vectors</span>
+<span class="n">avector</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="n">bvector</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="p">(</span><span class="n">avector</span> <span class="o">==</span> <span class="n">bvector</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">avector</span> <span class="o">==</span> <span class="n">bvector</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Verify staticmethod zerovec</span>
+<span class="n">zerovector</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="o">.</span><span class="n">zerovec</span><span class="p">()</span>
+
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">zerovector</span><span class="p">)</span> <span class="o">==</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">error_message</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">zerovector</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">)</span>
+<span class="k">assert</span> <span class="p">(</span><span class="n">zerovector</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">zerovector</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="p">(</span><span class="n">zerovector</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">zerovector</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="p">(</span><span class="n">zerovector</span><span class="o">.</span><span class="n">z</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">zerovector</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="class-for-currency-data-storage">
+<h2>Class for currency data storage<a class="headerlink" href="#class-for-currency-data-storage" title="Permalink to this headline">#</a></h2>
+<p>Create a class for storing money in SEK, Euro and Dollars and provides methods for manipulating the amount and type of currency.</p>
+<p>The class Money should have the following properties:</p>
+<ul>
+<li><p>Class attribute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">conversion_rate</span></code> dict for floats that contains the conversion rates SEK_TO_EUR (default to 11.9) and SEK_TO_USD (10.9) (class attributes)</p></li>
+</ul>
+</li>
+<li><p>Instance attribute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">currency</span></code> stores currency type (‘SEK’ or ‘EUR’)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">amount</span></code> stores amount of money</p></li>
+</ul>
+</li>
+<li><p>Ordinary class methods</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">set_conversion_rate(new_conversion_rate)</span></code> : method for (re)setting the conversion rates. If rate is present, update it. Otherwise add conversion rate.</p></li>
+</ul>
+</li>
+<li><p>Overloaded operations</p>
+<ul class="simple">
+<li><p>addition operator(<code class="docutils literal notranslate"><span class="pre">+</span></code>)     : implement addition of money objects - remember that you should only be able to add amounts if they are in same currency (that is, a conversion may be required)</p></li>
+<li><p>substraction operator(<code class="docutils literal notranslate"><span class="pre">-</span></code>) : implement substraction of money objects - remember that you should only be able to subtract amounts if they are same currency</p></li>
+</ul>
+<ul class="simple">
+<li><p>currency type of result must be currency type of first operand in arithmetical expression</p></li>
+</ul>
+</li>
+<li><p>Class method</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">update_rates</span></code>: takes a dictionary with new conversion rates and updates the class attribute</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Money</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class for manipulation of different currencies</span>
+<span class="sd">    </span>
+<span class="sd">    class attributes:</span>
+<span class="sd">        conversion_rate (dict of floats) </span>
+<span class="sd">    instance attributes:</span>
+<span class="sd">        amount (float)</span>
+<span class="sd">        currency (str)</span>
+<span class="sd">    class methods:</span>
+<span class="sd">        set_conversion_rate: resets conversion rate</span>
+<span class="sd">        __add__: implements addition of Money objects (right side currency converted to left side if different)</span>
+<span class="sd">        __sub__: implements subtraction of Money objects</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">conversion_rate</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;SEK_PER_EUR&quot;</span><span class="p">:</span> <span class="mf">11.9</span><span class="p">,</span> <span class="s2">&quot;SEK_PER_USD&quot;</span><span class="p">:</span> <span class="mf">10.9</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_amount</span> <span class="o">=</span> <span class="n">amount</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_currency</span> <span class="o">=</span> <span class="n">currency</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">amount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_amount</span>
+    
+    <span class="nd">@amount</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">amount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_amount</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_amount</span> <span class="o">=</span> <span class="n">new_amount</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">currency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currency</span>
+    
+    <span class="nd">@currency</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">currency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_currency</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_currency</span> <span class="o">=</span> <span class="n">new_currency</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">set_conversion_rate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">rate</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">conversion_rate</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">conversion_rate</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Introduced new conversion rate </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">conversion_rate</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span> <span class="p">:</span> <span class="n">value</span><span class="p">})</span>
+        
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currency</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_currency</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_amount</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_amount</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currency</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rate_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currency</span> <span class="o">+</span> <span class="s1">&#39;_PER_&#39;</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_currency</span>
+            <span class="n">rate_invkey</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_currency</span> <span class="o">+</span> <span class="s1">&#39;_PER_&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currency</span>
+            <span class="k">if</span> <span class="n">rate_key</span> <span class="ow">in</span> <span class="n">Money</span><span class="o">.</span><span class="n">conversion_rate</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_amount</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_amount</span> <span class="o">*</span> <span class="n">Money</span><span class="o">.</span><span class="n">conversion_rate</span><span class="p">[</span><span class="n">rate_key</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currency</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">rate_invkey</span> <span class="ow">in</span> <span class="n">Money</span><span class="o">.</span><span class="n">conversion_rate</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_amount</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_amount</span> <span class="o">/</span> <span class="n">Money</span><span class="o">.</span><span class="n">conversion_rate</span><span class="p">[</span><span class="n">rate_invkey</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currency</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Trying to add Money objects of unknown and different currency&quot;</span><span class="p">)</span>
+            
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="n">other</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_amount</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currency</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_amount</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_currency</span><span class="si">}</span><span class="s1">&#39;</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Verify class attribute</span>
+<span class="k">assert</span> <span class="n">Money</span><span class="o">.</span><span class="n">conversion_rate</span><span class="p">[</span><span class="s2">&quot;SEK_PER_EUR&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">11.9</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">Money</span><span class="o">.</span><span class="n">conversion_rate</span><span class="p">[</span><span class="s2">&quot;SEK_PER_EUR&quot;</span><span class="p">],</span> <span class="mf">11.9</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">Money</span><span class="o">.</span><span class="n">conversion_rate</span><span class="p">[</span><span class="s2">&quot;SEK_PER_USD&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">10.9</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">Money</span><span class="o">.</span><span class="n">conversion_rate</span><span class="p">[</span><span class="s2">&quot;SEK_PER_USD&quot;</span><span class="p">],</span> <span class="mf">10.9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Verify instance attributes</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">Money</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;SEK&#39;</span><span class="p">)</span>
+<span class="n">mb</span> <span class="o">=</span> <span class="n">Money</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">ma</span><span class="o">.</span><span class="n">amount</span> <span class="o">==</span> <span class="mi">100</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">ma</span><span class="o">.</span><span class="n">currency</span> <span class="o">==</span> <span class="s1">&#39;SEK&#39;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">currency</span><span class="p">,</span> <span class="s1">&#39;SEK&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">mb</span><span class="o">.</span><span class="n">amount</span> <span class="o">==</span> <span class="mi">50</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">mb</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">mb</span><span class="o">.</span><span class="n">currency</span> <span class="o">==</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">mb</span><span class="o">.</span><span class="n">currency</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Verify addition</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">Money</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;SEK&#39;</span><span class="p">)</span>
+<span class="n">mb</span> <span class="o">=</span> <span class="n">Money</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">)</span>
+<span class="n">mc</span> <span class="o">=</span> <span class="n">ma</span> <span class="o">+</span> <span class="n">mb</span>
+<span class="k">assert</span> <span class="n">mc</span><span class="o">.</span><span class="n">amount</span> <span class="o">==</span> <span class="mi">695</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span> <span class="mi">695</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">mc</span><span class="o">.</span><span class="n">currency</span> <span class="o">==</span> <span class="s1">&#39;SEK&#39;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">currency</span><span class="p">,</span> <span class="s1">&#39;SEK&#39;</span><span class="p">)</span>
+
+<span class="c1">#Verify addition</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">Money</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">)</span>
+<span class="n">mb</span> <span class="o">=</span> <span class="n">Money</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;SEK&#39;</span><span class="p">)</span>
+<span class="n">mc</span> <span class="o">=</span> <span class="n">ma</span> <span class="o">+</span> <span class="n">mb</span>
+<span class="k">assert</span> <span class="n">mc</span><span class="o">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mf">104.2016806722689</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span> <span class="mf">104.2</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">mc</span><span class="o">.</span><span class="n">currency</span> <span class="o">==</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">currency</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Verify subtraction</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">Money</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;SEK&#39;</span><span class="p">)</span>
+<span class="n">mb</span> <span class="o">=</span> <span class="n">Money</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">)</span>
+<span class="n">md</span> <span class="o">=</span> <span class="n">mb</span> <span class="o">-</span> <span class="n">ma</span>
+<span class="k">assert</span> <span class="n">md</span><span class="o">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mf">41.596638655462186</span><span class="p">),</span> <span class="n">error_message</span><span class="p">(</span><span class="n">md</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span> <span class="mf">41.6</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">md</span><span class="o">.</span><span class="n">currency</span> <span class="o">==</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">md</span><span class="o">.</span><span class="n">currency</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Set conversion rate</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">Money</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;SEK&#39;</span><span class="p">)</span>
+<span class="n">mb</span> <span class="o">=</span> <span class="n">Money</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">)</span>
+<span class="n">ma</span><span class="o">.</span><span class="n">set_conversion_rate</span><span class="p">({</span><span class="s2">&quot;SEK_PER_EUR&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">})</span>
+<span class="k">assert</span> <span class="n">ma</span><span class="o">.</span><span class="n">conversion_rate</span><span class="p">[</span><span class="s2">&quot;SEK_PER_EUR&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">20</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">conversion_rate</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">mb</span><span class="o">.</span><span class="n">conversion_rate</span><span class="p">[</span><span class="s2">&quot;SEK_PER_EUR&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">20</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">mb</span><span class="o">.</span><span class="n">conversion_rate</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SEK_PER_EUR 20
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="inheritance-parent-and-child-classes">
+<h2>Inheritance, parent and child classes<a class="headerlink" href="#inheritance-parent-and-child-classes" title="Permalink to this headline">#</a></h2>
+<p>A main concept in object-oriented programming is inheritance.</p>
+<p>Some benefits of inheritance:</p>
+<ul class="simple">
+<li><p>Represent the relationship between different objects that exists in the real world. (For instance, humans, cats, dogs, etc. are all animals)</p></li>
+<li><p>Avoid replication of code. We do not need to rewrite similar code piece over and over again</p></li>
+</ul>
+<p><strong>Syntax of simple inheritance:</strong></p>
+<p>As a class (by default in Python 3 or explicitly in Python 2) inherents from the built-in <code class="docutils literal notranslate"><span class="pre">object</span></code> class</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span> <span class="c1"># Parent class inherents from the built-in object class</span>
+    <span class="o">&lt;</span><span class="n">body</span> <span class="n">of</span> <span class="n">code</span><span class="o">&gt;</span>
+
+<span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">ParentClass</span><span class="p">):</span> <span class="c1">#Child class inherents from the Parent class</span>
+    <span class="o">&lt;</span><span class="n">body</span> <span class="n">of</span> <span class="n">code</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>A parent class (also called superclass or baseclass) is a class whose properties are inherited by the child class (also called subclass or derived class).</p>
+<p><strong>Ways to inherit from parent class:</strong></p>
+<ul class="simple">
+<li><p>Simplest case is when child class do not implement its own <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. Then it will automatically inherit its parent</p></li>
+<li><p>When the child implements its own <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, it must invoke <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code>. <code class="docutils literal notranslate"><span class="pre">super()</span></code> allows you to refer to the parent class</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parent</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;parent initialization&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parent_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Calling parent method&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">&lt;</span><span class="n">inputs</span><span class="o">&gt;</span><span class="p">)</span> <span class="c1">#&lt;------- required when inheritance should be forced</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Child initialization&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">child_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Calling child method&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Besides inheriting all data attributes and methods from the parent class, the child class can:</p>
+<ul class="simple">
+<li><p>introduce additional data attributes</p></li>
+<li><p>introduce additional procedural attributes (methods)</p></li>
+<li><p>override methods from the parent class (use the same name for the method in a child class as its parent class in order to override the behavior).</p></li>
+</ul>
+<p><strong>Hierachies:</strong></p>
+<p>Child class can have methods with same name as superclass. So, how do we keep track of which one to use?</p>
+<ol class="arabic simple">
+<li><p>For given class instance, look for a method name in current class definition</p></li>
+<li><p>If not present, look for method name up the hierarchy (that is, in parent, then grandparent, etc.)</p></li>
+<li><p>Use first method up the hierarchy that you found with that method name</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span> 
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to illustrate inheritance</span>
+<span class="sd">     </span>
+<span class="sd">    instance attributes:</span>
+<span class="sd">        name: (str) animal name</span>
+<span class="sd">        age: (int) animal age</span>
+<span class="sd">        </span>
+<span class="sd">    class methods:</span>
+<span class="sd">        __repr__: formal string representation of Animal&quot;</span>
+<span class="sd">        __str__: informal string representation of Animal</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">animals</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+    
+    <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>    
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_age</span>
+    
+    <span class="nd">@age</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Animal(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2">)&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Hello, I am an Animal named </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">. I am </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s now make two child classes derived from the Animal class</span>
+<span class="c1"># First, write a Cat class. It should introduce another data attribute color</span>
+<span class="c1"># It should override the __repr__ methods and return f&quot;Cat({self.name}, {self.age}, {self.color})&quot;</span>
+<span class="c1"># It should override the __str__ method and return f&quot;I am a Cat that can say meow&quot;</span>
+
+<span class="k">class</span> <span class="nc">Cat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span> <span class="c1">#&lt;---- Invoked separate init for child class. Hence I user super()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">color</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span>
+    
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1">#&lt;------------- Overriding a method</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Cat(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="si">}</span><span class="s2">)&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1">#&lt;------------- Overriding a method</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;I am a Cat that can say meow&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now to the Person class. </span>
+<span class="c1"># It should introduce another data attribute job</span>
+<span class="c1"># It should override the __repr__ methods and return f&quot;Person({self.name}, {self.age}, {self.job})&quot;</span>
+<span class="c1"># It should override the __str__ method and return f&quot;My name is {self.name}. I am {self.age} years old and my job is {self.job}&quot;</span>
+        
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">job</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_job</span> <span class="o">=</span> <span class="n">job</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">job</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job</span>
+    
+    <span class="nd">@job</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_job</span> <span class="o">=</span> <span class="n">job</span>
+    
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1">#&lt;------------- Overriding a method</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Person(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="si">}</span><span class="s2">)&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># &lt;-------------- Overriding a method</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;My name is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">. I am </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old and my job is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="si">}</span><span class="s2">&quot;</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let us create a Person instance</span>
+<span class="n">kevin</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s2">&quot;Kevin&quot;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s2">&quot;student&quot;</span><span class="p">)</span>
+
+<span class="c1"># And a cat instance</span>
+<span class="n">carlo</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;Carlo&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;brown&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">kevin</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Kevin&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">kevin</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;Kevin&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">kevin</span><span class="o">.</span><span class="n">age</span> <span class="o">==</span> <span class="mi">18</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">kevin</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">kevin</span><span class="o">.</span><span class="n">job</span> <span class="o">==</span> <span class="s2">&quot;student&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">kevin</span><span class="o">.</span><span class="n">job</span><span class="p">,</span> <span class="s2">&quot;student&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">kevin</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;My name is Kevin. I am 18 years old and my job is student&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">kevin</span><span class="p">),</span> <span class="s2">&quot;My name is Kevin. I am 18 years old and my job is student&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">repr</span><span class="p">(</span><span class="n">kevin</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Person(Kevin, 18, student)&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">kevin</span><span class="p">),</span> <span class="s2">&quot;Person(Kevin, 18, student)&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">carlo</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Carlo&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">carlo</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;Carlo&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">carlo</span><span class="o">.</span><span class="n">age</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">carlo</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">carlo</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="s2">&quot;brown&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="n">carlo</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="s2">&quot;brown&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">carlo</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;I am a Cat that can say meow&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">carlo</span><span class="p">),</span> <span class="s2">&quot;I am a Cat that can say meow&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">repr</span><span class="p">(</span><span class="n">carlo</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Cat(Carlo, 2, brown)&quot;</span><span class="p">,</span> <span class="n">error_message</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">carlo</span><span class="p">),</span> <span class="s2">&quot;Cat(Carlo, 2, brown)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./session6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../session5/5_input_output.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 5 - Input/output</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../matplotlib/matplotlib_exercises.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to matplotlib</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-create-a-class-for-a-three-dimensional-vector">A. Create a class for a three-dimensional vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-for-currency-data-storage">Class for currency data storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inheritance-parent-and-child-classes">Inheritance, parent and child classes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nanna Holmgaard List
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

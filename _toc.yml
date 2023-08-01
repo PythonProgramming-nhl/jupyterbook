@@ -1,0 +1,16 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+#- file: markdown
+- file: session01/1_simple_datatypes
+- file: session01/2_simple_datatypes
+- file: session2/2_flowcontrol
+- file: session3/3_functions
+- file: session4/4_compound_datatypes
+- file: session5/5_input_output
+- file: session6/6_classes
+- file: matplotlib/matplotlib_exercises
+- file: numpy/numpy_exercises
