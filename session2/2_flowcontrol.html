@@ -7,8 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lecture 2 - Flow control &#8212; Programming in Python</title>
   
   
@@ -361,6 +360,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-to-while-loops">Now to while loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maze-challenge">Maze challenge</a></li>
 </ul>
             </nav>
         </div>
@@ -382,7 +382,7 @@ document.write(`
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="lecture-2-flow-control">
+<div class="tex2jax_ignore mathjax_ignore section" id="lecture-2-flow-control">
 <h1>Lecture 2 - Flow control<a class="headerlink" href="#lecture-2-flow-control" title="Permalink to this headline">#</a></h1>
 <p>Now we are going to practice branching and iteration</p>
 <ul class="simple">
@@ -583,23 +583,16 @@ s
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">times</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enthusiasm level (1-10): &quot;</span><span class="p">))</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># While loop example to reproduce with for loop</span>
 
-<span class="nn">File ~/opt/miniconda3/envs/bb1000_2023/lib/python3.11/site-packages/ipykernel/kernelbase.py:1172,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1165</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Forward raw_input to frontends</span>
-<span class="g g-Whitespace">   </span><span class="mi">1166</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1167</span><span class="sd"> Raises</span>
-<span class="g g-Whitespace">   </span><span class="mi">1168</span><span class="sd"> ------</span>
-<span class="g g-Whitespace">   </span><span class="mi">1169</span><span class="sd"> StdinNotImplementedError if active frontend doesn&#39;t support stdin.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1170</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1171</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1172</span>     <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1173</span>         <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1174</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1175</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1176</span>     <span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1177</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_ident</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">   </span><span class="mi">1178</span>     <span class="bp">self</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(</span><span class="s2">&quot;shell&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1179</span>     <span class="n">password</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1180</span> <span class="p">)</span>
+<span class="nn">File ~/opt/miniconda3/envs/bb1000/lib/python3.9/site-packages/ipykernel/kernelbase.py:1201,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1199</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1200</span>     <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1201</span>     <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1202</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1203</span>     <span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1204</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_ident</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1205</span>     <span class="bp">self</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(</span><span class="s2">&quot;shell&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1206</span>     <span class="n">password</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1207</span> <span class="p">)</span>
 
 <span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
 </pre></div>
@@ -722,7 +715,7 @@ s
 </div>
 </div>
 </div>
-<section id="now-to-while-loops">
+<div class="section" id="now-to-while-loops">
 <h2>Now to while loops<a class="headerlink" href="#now-to-while-loops" title="Permalink to this headline">#</a></h2>
 <p>Suppose that we want to know the square root of some positive number (<code class="docutils literal notranslate"><span class="pre">value</span></code>) but do not have the math.sqrt() function available.
 That is, we want to calculate <span class="math notranslate nohighlight">\(x\)</span>, where <span class="math notranslate nohighlight">\(x^2 = value\)</span></p>
@@ -783,8 +776,50 @@ That is, we want to calculate <span class="math notranslate nohighlight">\(x\)</
 </div>
 </div>
 </div>
-</section>
-</section>
+</div>
+<div class="section" id="maze-challenge">
+<h2>Maze challenge<a class="headerlink" href="#maze-challenge" title="Permalink to this headline">#</a></h2>
+<p>In this exercise, your task is to write an algorithm that will take you through a maze.</p>
+<ul class="simple">
+<li><p>Several pre-defined functions are at your disposal:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_right_clear()</span></code> - checks whether the field to the right is clear or not (wall)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_left_clear()</span></code> - checks whether the field to the left is clear or not (wall)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_front_clear()</span></code>- checks whether the field</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turn_right()</span></code> - changes your direction to the right</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turn_left()</span></code>- changes your direction to the left</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">move_forward()</span></code>- move you forward in the current direction</p></li>
+</ul>
+</li>
+<li><p>You need to combine these functions in a control flow</p></li>
+<li><p>The entrance to the maze starts at the yellow square and the exit is marked by the green square</p></li>
+<li><p>An already given animation functionality is “wrapped” around the the control flow (for you to write) so that you can see whether you made it</p></li>
+</ul>
+<p><strong>NOTE</strong></p>
+<ul class="simple">
+<li><p>Should you end up in an infinite loop, you need to manually stop the relevant code block by pressing the “stop” bottom (same location as the play bottom).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> qt
+<span class="kn">from</span> <span class="nn">maze</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># You can change between MAZE0, MAZE1 and MAZE2 for increasing difficulty</span>
+<span class="n">reset_start</span><span class="p">(</span><span class="n">MAZE2</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">is_right_clear</span><span class="p">():</span>
+        <span class="n">turn_right</span><span class="p">()</span>
+        <span class="n">move_forward</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">is_front_clear</span><span class="p">():</span>
+        <span class="n">move_forward</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">turn_left</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -854,6 +889,7 @@ That is, we want to calculate <span class="math notranslate nohighlight">\(x\)</
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-to-while-loops">Now to while loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maze-challenge">Maze challenge</a></li>
 </ul>
   </nav></div>
 

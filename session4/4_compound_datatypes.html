@@ -7,8 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lecture 4 - Compound data types &#8212; Programming in Python</title>
   
   
@@ -390,7 +389,7 @@ document.write(`
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="lecture-4-compound-data-types">
+<div class="tex2jax_ignore mathjax_ignore section" id="lecture-4-compound-data-types">
 <h1>Lecture 4 - Compound data types<a class="headerlink" href="#lecture-4-compound-data-types" title="Permalink to this headline">#</a></h1>
 <p>Today we will practice working with sequence data types:</p>
 <ul class="simple">
@@ -605,7 +604,7 @@ class list(object)
 Help on class zip in module builtins:
 
 class zip(object)
- |  zip(*iterables, strict=False) --&gt; Yield tuples until an input is exhausted.
+ |  zip(*iterables) --&gt; A zip object yielding tuples until an input is exhausted.
  |  
  |     &gt;&gt;&gt; list(zip(&#39;abcdefg&#39;, range(3), range(4)))
  |     [(&#39;a&#39;, 0, 0), (&#39;b&#39;, 1, 1), (&#39;c&#39;, 2, 2)]
@@ -614,9 +613,6 @@ class zip(object)
  |  passed as positional arguments to zip().  The i-th element in every tuple
  |  comes from the i-th iterable argument to zip().  This continues until the
  |  shortest argument is exhausted.
- |  
- |  If strict is true and one of the arguments is exhausted before the others,
- |  raise a ValueError.
  |  
  |  Methods defined here:
  |  
@@ -631,9 +627,6 @@ class zip(object)
  |  
  |  __reduce__(...)
  |      Return state information for pickling.
- |  
- |  __setstate__(...)
- |      Set state information for unpickling.
  |  
  |  ----------------------------------------------------------------------
  |  Static methods defined here:
@@ -674,8 +667,22 @@ class zip(object)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5, 3) &lt;class &#39;tuple&#39;&gt;
-5 3 &lt;class &#39;int&#39;&gt; &lt;class &#39;int&#39;&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Examples from lecture 4. </span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># &quot;return&quot; in a function always returns an object. When there are multiple values in the return statement, it returns a tuple </span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="k">def</span> <span class="nf">sum_and_difference</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Calculate the sum and difference between two numbers</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="sd"> </span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="sd">     Args:</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span><span class="sd">         tuple[float | int, float | int]: tuple of sum and difference</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="nb">sum</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for |: &#39;type&#39; and &#39;type&#39;
 </pre></div>
 </div>
 </div>
@@ -698,11 +705,6 @@ class zip(object)
     <span class="n">alist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     
 <span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 </pre></div>
 </div>
 </div>
@@ -742,14 +744,6 @@ class zip(object)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1, 0] [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-Updated list:  [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-0x1088c9980 0x1088c9980
-Updated list with new first element:  [-2, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -760,7 +754,7 @@ Updated list with new first element:  [-2, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
 </div>
 </div>
 </div>
-<section id="indexing-and-slicing">
+<div class="section" id="indexing-and-slicing">
 <h2>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h2>
 <p>You can use indexing to access certain elements in the sequence data types.</p>
 <p>Some examples with lists below:</p>
@@ -869,8 +863,8 @@ Updated list with new first element:  [-2, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
 </div>
 </div>
 </div>
-</section>
-<section id="iterables-of-iterables">
+</div>
+<div class="section" id="iterables-of-iterables">
 <h2>Iterables of iterables<a class="headerlink" href="#iterables-of-iterables" title="Permalink to this headline">#</a></h2>
 <p>The compound data types can contain elements of any type. In other words, their elements could be another iterable.
 For example, list of lists are very useful in many cases.</p>
@@ -900,8 +894,8 @@ For example, list of lists are very useful in many cases.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="introducing-iterable-comprehensions">
+</div>
+<div class="section" id="introducing-iterable-comprehensions">
 <h2>Introducing iterable comprehensions<a class="headerlink" href="#introducing-iterable-comprehensions" title="Permalink to this headline">#</a></h2>
 <p>Comprehensions in Python provide us with a short and concise way to construct new sequences (such as lists, set, dictionary etc.) using sequences which have been already defined.</p>
 <p>Python supports four types:</p>
@@ -930,11 +924,6 @@ For example, list of lists are very useful in many cases.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -951,11 +940,6 @@ For example, list of lists are very useful in many cases.</p>
 
 <span class="n">blist</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">alist</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">blist</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 </pre></div>
 </div>
 </div>
@@ -979,11 +963,6 @@ For example, list of lists are very useful in many cases.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4, 16, 36, 64, 100]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1002,12 +981,6 @@ For example, list of lists are very useful in many cases.</p>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">list_from_tuple</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">list_from_str</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 3]
-[&#39;C&#39;, &#39;O&#39;, &#39;O&#39;, &#39;L&#39;]
 </pre></div>
 </div>
 </div>
@@ -1039,11 +1012,6 @@ For example, list of lists are very useful in many cases.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4]]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1053,8 +1021,8 @@ For example, list of lists are very useful in many cases.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="generators">
+</div>
+<div class="section" id="generators">
 <h2>Generators<a class="headerlink" href="#generators" title="Permalink to this headline">#</a></h2>
 <p>We can do other cool stuff using so-called generators.
 We will not dive into details here, I just want to show you the use of two such examples.</p>
@@ -1082,12 +1050,6 @@ We will not dive into details here, I just want to show you the use of two such 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 1)
-(3, 2)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1103,11 +1065,6 @@ We will not dive into details here, I just want to show you the use of two such 
     <span class="n">student_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">age</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">student_dict</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Alice&#39;: 24, &#39;Bob&#39;: 40, &#39;Charlie&#39;: 30}
 </pre></div>
 </div>
 </div>
@@ -1148,14 +1105,9 @@ We will not dive into details here, I just want to show you the use of two such 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Alice&#39;: 24, &#39;Bob&#39;: 40, &#39;Charlie&#39;: 30}
-</pre></div>
 </div>
 </div>
-</div>
-</section>
-<section id="dictionaries">
+<div class="section" id="dictionaries">
 <h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1206,7 +1158,7 @@ We will not dive into details here, I just want to show you the use of two such 
 </div>
 </div>
 </div>
-<section id="sorting-a-dictionary-by-values">
+<div class="section" id="sorting-a-dictionary-by-values">
 <h3>Sorting a dictionary by values<a class="headerlink" href="#sorting-a-dictionary-by-values" title="Permalink to this headline">#</a></h3>
 <p>Knowing how to sort dictionaries according to their values can be very helpful.</p>
 <p>We will be looking at two methods for sorting:</p>
@@ -1259,14 +1211,6 @@ We will not dive into details here, I just want to show you the use of two such 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;name&#39;: &#39;Evi&#39;, &#39;age&#39;: 0}, {&#39;name&#39;: &#39;Geo&#39;, &#39;age&#39;: 2}, {&#39;name&#39;: &#39;Annabel&#39;, &#39;age&#39;: 7}, {&#39;name&#39;: &#39;Noelle&#39;, &#39;age&#39;: 8}, {&#39;name&#39;: &#39;Hjalte&#39;, &#39;age&#39;: 8}, {&#39;name&#39;: &#39;Magnus&#39;, &#39;age&#39;: 11}, {&#39;name&#39;: &#39;Jakob&#39;, &#39;age&#39;: 28}, {&#39;name&#39;: &#39;Nanna&#39;, &#39;age&#39;: 37}, {&#39;name&#39;: &#39;Allan&#39;, &#39;age&#39;: 45}, {&#39;name&#39;: &#39;Kenneth&#39;, &#39;age&#39;: 53}, {&#39;name&#39;: &#39;Annett&#39;, &#39;age&#39;: 66}]
-time elapsed (in sec):  0.0004329681396484375
-[{&#39;name&#39;: &#39;Annett&#39;, &#39;age&#39;: 66}, {&#39;name&#39;: &#39;Kenneth&#39;, &#39;age&#39;: 53}, {&#39;name&#39;: &#39;Allan&#39;, &#39;age&#39;: 45}, {&#39;name&#39;: &#39;Nanna&#39;, &#39;age&#39;: 37}, {&#39;name&#39;: &#39;Jakob&#39;, &#39;age&#39;: 28}, {&#39;name&#39;: &#39;Magnus&#39;, &#39;age&#39;: 11}, {&#39;name&#39;: &#39;Noelle&#39;, &#39;age&#39;: 8}, {&#39;name&#39;: &#39;Hjalte&#39;, &#39;age&#39;: 8}, {&#39;name&#39;: &#39;Annabel&#39;, &#39;age&#39;: 7}, {&#39;name&#39;: &#39;Geo&#39;, &#39;age&#39;: 2}, {&#39;name&#39;: &#39;Evi&#39;, &#39;age&#39;: 0}]
-time elapsed (in sec):  8.678436279296875e-05
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1287,17 +1231,9 @@ time elapsed (in sec):  8.678436279296875e-05
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;name&#39;: &#39;Evi&#39;, &#39;age&#39;: 0}, {&#39;name&#39;: &#39;Geo&#39;, &#39;age&#39;: 2}, {&#39;name&#39;: &#39;Annabel&#39;, &#39;age&#39;: 7}, {&#39;name&#39;: &#39;Noelle&#39;, &#39;age&#39;: 8}, {&#39;name&#39;: &#39;Hjalte&#39;, &#39;age&#39;: 8}, {&#39;name&#39;: &#39;Magnus&#39;, &#39;age&#39;: 11}, {&#39;name&#39;: &#39;Jakob&#39;, &#39;age&#39;: 28}, {&#39;name&#39;: &#39;Nanna&#39;, &#39;age&#39;: 37}, {&#39;name&#39;: &#39;Allan&#39;, &#39;age&#39;: 45}, {&#39;name&#39;: &#39;Kenneth&#39;, &#39;age&#39;: 53}, {&#39;name&#39;: &#39;Annett&#39;, &#39;age&#39;: 66}]
-time elapsed (in sec):  0.00045180320739746094
-[{&#39;name&#39;: &#39;Annett&#39;, &#39;age&#39;: 66}, {&#39;name&#39;: &#39;Kenneth&#39;, &#39;age&#39;: 53}, {&#39;name&#39;: &#39;Allan&#39;, &#39;age&#39;: 45}, {&#39;name&#39;: &#39;Nanna&#39;, &#39;age&#39;: 37}, {&#39;name&#39;: &#39;Jakob&#39;, &#39;age&#39;: 28}, {&#39;name&#39;: &#39;Magnus&#39;, &#39;age&#39;: 11}, {&#39;name&#39;: &#39;Noelle&#39;, &#39;age&#39;: 8}, {&#39;name&#39;: &#39;Hjalte&#39;, &#39;age&#39;: 8}, {&#39;name&#39;: &#39;Annabel&#39;, &#39;age&#39;: 7}, {&#39;name&#39;: &#39;Geo&#39;, &#39;age&#39;: 2}, {&#39;name&#39;: &#39;Evi&#39;, &#39;age&#39;: 0}]
-time elapsed (in sec):  0.0001049041748046875
-</pre></div>
 </div>
 </div>
-</div>
-</section>
-<section id="increasing-efficiency-of-fibonacci-using-dictionaries">
+<div class="section" id="increasing-efficiency-of-fibonacci-using-dictionaries">
 <h3>Increasing efficiency of fibonacci using dictionaries<a class="headerlink" href="#increasing-efficiency-of-fibonacci-using-dictionaries" title="Permalink to this headline">#</a></h3>
 <p>Last time we implemented a function <code class="docutils literal notranslate"><span class="pre">fibonacci</span></code> to compute Fibonacci numbers. I have pasted my version in below.</p>
 <p>We did so using recursion. We saw that the number of calls to the <code class="docutils literal notranslate"><span class="pre">fibonacci</span></code> grew very quickly and a lot of numbers have to be recalculated.</p>
@@ -1327,476 +1263,6 @@ time elapsed (in sec):  0.0001049041748046875
 <span class="n">number_fibonacci_calls</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">fibonacci</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of fibonacci calls with original implementation: &quot;</span><span class="p">,</span> <span class="n">number_fibonacci_calls</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling fibonacci with x:  12
-Calling fibonacci with x:  11
-Calling fibonacci with x:  10
-Calling fibonacci with x:  9
-Calling fibonacci with x:  8
-Calling fibonacci with x:  7
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  7
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  8
-Calling fibonacci with x:  7
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  9
-Calling fibonacci with x:  8
-Calling fibonacci with x:  7
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  7
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  10
-Calling fibonacci with x:  9
-Calling fibonacci with x:  8
-Calling fibonacci with x:  7
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  7
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  8
-Calling fibonacci with x:  7
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  6
-Calling fibonacci with x:  5
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  4
-Calling fibonacci with x:  3
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Calling fibonacci with x:  1
-Calling fibonacci with x:  2
-Calling fibonacci with x:  1
-Calling fibonacci with x:  0
-Number of fibonacci calls with original implementation:  465
 </pre></div>
 </div>
 </div>
@@ -1847,12 +1313,6 @@ Number of fibonacci calls with original implementation:  465
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of fibonacci calls with speedy implementation:  11
-The final dictionary:  {0: 1, 1: 1, 2: 2, 3: 3, 4: 5, 5: 8, 6: 13, 7: 21, 8: 34, 9: 55, 10: 89, 11: 144}
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1862,9 +1322,9 @@ The final dictionary:  {0: 1, 1: 1, 2: 2, 3: 3, 4: 5, 5: 8, 6: 13, 7: 21, 8: 34,
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="mutables-versus-immutables-and-objects">
+</div>
+</div>
+<div class="section" id="mutables-versus-immutables-and-objects">
 <h2>Mutables versus immutables and objects<a class="headerlink" href="#mutables-versus-immutables-and-objects" title="Permalink to this headline">#</a></h2>
 <p>This is an introductory course to Python, so we will not dive deep into memory.</p>
 <p>Yet, you need to understand:</p>
@@ -1909,14 +1369,6 @@ The final dictionary:  {0: 1, 1: 1, 2: 2, 3: 3, 4: 5, 5: 8, 6: 13, 7: 21, 8: 34,
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>i before adding 1:  4
-memory address of i before adding 1:  0x1055bcc88
-i after adding 1:  5
-memory address of i after adding 1:  0x1055bcca8
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1933,14 +1385,6 @@ memory address of i after adding 1:  0x1055bcca8
 
 <span class="c1"># As you will see, the append operation DID NOT change the alist!</span>
 <span class="c1"># This is because a list is mutable (=CAN BE changed in place!)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>alist before appending 1:  [2, 4]
-memory address of alist before appending 1:  0x108bd4180
-alist after appending 1:  [2, 4, 1]
-memory address of alist after appending 1:  0x108bd4180
 </pre></div>
 </div>
 </div>
@@ -1969,19 +1413,9 @@ memory address of alist after appending 1:  0x108bd4180
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>alist before adding 1:  [2, 4]
-memory address of alist before adding 1:  0x108be8280
-[&#39;0x1055bcc48&#39;, &#39;0x1055bcc88&#39;]
-alist after adding 1:  [3, 5]
-memory address of alist after adding 1:  0x108be8280
-[&#39;0x1055bcc68&#39;, &#39;0x1055bcca8&#39;]
-</pre></div>
 </div>
 </div>
-</div>
-</section>
-<section id="an-extension-of-the-above-discussion-to-functions">
+<div class="section" id="an-extension-of-the-above-discussion-to-functions">
 <h2>An extension of the above discussion to functions<a class="headerlink" href="#an-extension-of-the-above-discussion-to-functions" title="Permalink to this headline">#</a></h2>
 <p>Why do I show you this?</p>
 <ul class="simple">
@@ -2012,13 +1446,6 @@ memory address of alist after adding 1:  0x108be8280
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Print i before and outside function call:      5
-Print i inside function call after increment:  6
-Print i after and outside function call:       5
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2042,13 +1469,6 @@ Print i after and outside function call:       5
 
 <span class="c1"># What you should see is that the scope of the blist INSIDE the function affected the value of alist OUTSIDE the function!!! </span>
 <span class="c1"># This happened without ever returning anything from the function or using global (for global scope) in the function!</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Print alist before and outside function call:      [2, 3]
-Print blist inside function call after increment:  [2, 3, 1]
-Print alist after and outside function call:       [2, 3, 1]
 </pre></div>
 </div>
 </div>
@@ -2091,26 +1511,9 @@ Print alist after and outside function call:       [2, 3, 1]
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before function call
-Memory ID of alist:     0x108beb000
-Memory ID of alist[0]:  0x1055bcc48
-Memory ID of alist[1]:  0x1055bcc68
-alist outside function call:            [2, 3]
------------
-alist inside function after increment:  [3, 4]
------------
-After function call
-alist outside function call:            [3, 4]
-Memory ID of alist:     0x108beb000
-Memory ID of alist[0]:  0x1055bcc68
-Memory ID of alist[1]:  0x1055bcc88
-</pre></div>
 </div>
 </div>
 </div>
-</section>
-</section>
 
     <script type="text/x-thebe-config">
     {
