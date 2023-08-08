@@ -7,7 +7,8 @@ It is a part of the course: BB1000 Programming in Python
 
 **NOTE** 
 * The solutions to the exercises are given. The exercise text is however still present (replace `None`/## and alike). Ignore those.
-* In some places, input() is used. This will throw a StdinNotImplementedError.
+* In some places, `input()` is used. This will throw a `StdinNotImplementedError`:w
+.
 
 ```{tableofcontents}
 ```

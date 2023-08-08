@@ -16,6 +16,7 @@ DIRECTION = DIRECTIONS[DIR]
 POSITION = np.array([0, 0])
 MAZE = None
 IM = None
+RUNNING = False
 
 # =======================================================
 # Mazes
@@ -93,7 +94,7 @@ def get_start_position():
 
 
 def reset_start(maze):
-    global POSITION, MAZE, IM
+    global POSITION, MAZE, IM, RUNNING
     MAZE = copy.deepcopy(maze)
     POSITION = get_start_position()
     fig = plt.figure()
@@ -101,7 +102,13 @@ def reset_start(maze):
     plt.yticks([])
     plt.ion()
     IM = plt.imshow(MAZE, vmin=0, vmax=4)
+    RUNNING = True
     return fig
+
+
+def is_running():
+    global RUNNING
+    return RUNNING
 
 
 def is_position_clear(position):
@@ -160,16 +167,20 @@ def turn_left():
 
 @update
 def move_forward():
-    global POSITION, DIRECTION, MAZE
+    global POSITION, DIRECTION, MAZE, RUNNING
     current_val = MAZE[POSITION[0], POSITION[1]]
 
     MAZE[POSITION[0], POSITION[1]] = 0 if current_val == 4 else 1
     new_position = POSITION + DIRECTION
     # If the wall is hit - raise an error
     if MAZE[new_position[0], new_position[1]] == 1:
-        raise ValueError("You hit the wall, try again")
+        RUNNING = False
+        print("You hit the wall, try again")
+        return
     elif MAZE[new_position[0], new_position[1]] == 3:
-        raise KeyError("Yay you completed the maze!")
+        RUNNING = False
+        print("Yay you completed the maze!")
+        return
     # Set new position
     POSITION = new_position
     # Update maze value
