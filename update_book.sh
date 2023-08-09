@@ -6,6 +6,6 @@
 # conda install -c conda-forge ghp-import
 
 #To update your online book:
-#1) make changes to your book’s content on the main branch of your repository
+#1) make changes to your book’s content on the main branch of your repository. Note that we have branch protection rule (lock branch). Unlock on GitHub to push.
 #2) re-build your book with jupyter-book build PythonExerciseJupyterBook 
 #3) then use ghp-import -n -p -f _build/html as before to push the newly built HTML to the gh-pages branch.

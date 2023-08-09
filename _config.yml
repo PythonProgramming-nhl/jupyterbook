@@ -3,7 +3,7 @@
 
 title: Programming in Python
 author: Nanna Holmgaard List
-logo: CANVAS_figure.png
+logo: pythonhero.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
