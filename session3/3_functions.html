@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Lecture 3 - Functions &#8212; Programming in Python</title>
   
   
@@ -43,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lecture 4 - Compound data types" href="../session4/4_compound_datatypes.html" />
     <link rel="prev" title="Lecture 2 - Flow control" href="../session2/2_flowcontrol.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -157,8 +159,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../session01/1_simple_datatypes.html">Lecture 0 - Simple data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session01/2_simple_datatypes.html">Lecture 1 - Data types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session2/2_flowcontrol.html">Lecture 2 - Flow control</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 3 - Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session4/4_compound_datatypes.html">Lecture 4 - Compound data types</a></li>
@@ -386,8 +386,8 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="lecture-3-functions">
-<h1>Lecture 3 - Functions<a class="headerlink" href="#lecture-3-functions" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-3-functions">
+<h1>Lecture 3 - Functions<a class="headerlink" href="#lecture-3-functions" title="Permalink to this heading">#</a></h1>
 <p>Today, we are going to practice functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span><span class="p">):</span>
     <span class="n">docstring</span>
@@ -631,8 +631,8 @@ The integer i is even:  20
 </div>
 </div>
 </div>
-<div class="section" id="using-help-to-get-documentation">
-<h2>Using <code class="docutils literal notranslate"><span class="pre">help()</span></code> to get documentation<a class="headerlink" href="#using-help-to-get-documentation" title="Permalink to this headline">#</a></h2>
+<section id="using-help-to-get-documentation">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">help()</span></code> to get documentation<a class="headerlink" href="#using-help-to-get-documentation" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Having written the mysum function, try to print its documentation using &#39;help(object)&#39;</span>
@@ -872,9 +872,9 @@ class float(object)
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="scope">
-<h2>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="scope">
+<h2>Scope<a class="headerlink" href="#scope" title="Permalink to this heading">#</a></h2>
 <p>A variable is only available from inside the region it is created. This is called scope.</p>
 <ul class="simple">
 <li><p><strong>Global scope</strong>: A variable created in the main body of the Python code is a global variable and belongs to the global scope.</p></li>
@@ -1017,9 +1017,9 @@ Value of x outside function after function call but now reassigning x to the out
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="recursion-a-function-calling-itself">
-<h2>Recursion - a function calling itself.<a class="headerlink" href="#recursion-a-function-calling-itself" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="recursion-a-function-calling-itself">
+<h2>Recursion - a function calling itself.<a class="headerlink" href="#recursion-a-function-calling-itself" title="Permalink to this heading">#</a></h2>
 <p>What is recursion?</p>
 <ul class="simple">
 <li><p><strong>Algorithmically:</strong> a way to design solutions by divide-and-conquer</p>
@@ -1058,23 +1058,23 @@ x_n = x_{n-1} + x_{n-2}
 </ul>
 <p>How many females are there at the end of one year? What about after two years?</p>
 <p>You task is to fill the table below.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-right head"><p>Month</p></th>
-<th class="text-center head"><p>0</p></th>
-<th class="text-center head"><p>1</p></th>
-<th class="text-center head"><p>2</p></th>
-<th class="text-center head"><p>3</p></th>
-<th class="text-center head"><p>4</p></th>
-<th class="text-center head"><p>5</p></th>
-<th class="text-center head"><p>6</p></th>
-<th class="text-center head"><p>7</p></th>
-<th class="text-center head"><p>8</p></th>
-<th class="text-center head"><p>9</p></th>
-<th class="text-center head"><p>10</p></th>
-<th class="text-center head"><p>11</p></th>
-<th class="text-center head"><p>12</p></th>
-<th class="text-center head"><p>24</p></th>
+<tr class="row-odd"><th class="head text-right"><p>Month</p></th>
+<th class="head text-center"><p>0</p></th>
+<th class="head text-center"><p>1</p></th>
+<th class="head text-center"><p>2</p></th>
+<th class="head text-center"><p>3</p></th>
+<th class="head text-center"><p>4</p></th>
+<th class="head text-center"><p>5</p></th>
+<th class="head text-center"><p>6</p></th>
+<th class="head text-center"><p>7</p></th>
+<th class="head text-center"><p>8</p></th>
+<th class="head text-center"><p>9</p></th>
+<th class="head text-center"><p>10</p></th>
+<th class="head text-center"><p>11</p></th>
+<th class="head text-center"><p>12</p></th>
+<th class="head text-center"><p>24</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1221,8 +1221,8 @@ Check out:</p></li>
 </div>
 </div>
 </div>
-<div class="section" id="another-classical-demonstration-for-recursive-programming-considers-palindromes">
-<h3>Another classical demonstration for recursive programming considers palindromes.<a class="headerlink" href="#another-classical-demonstration-for-recursive-programming-considers-palindromes" title="Permalink to this headline">#</a></h3>
+<section id="another-classical-demonstration-for-recursive-programming-considers-palindromes">
+<h3>Another classical demonstration for recursive programming considers palindromes.<a class="headerlink" href="#another-classical-demonstration-for-recursive-programming-considers-palindromes" title="Permalink to this heading">#</a></h3>
 <p>palindrome = a sequence of symbols (such as words) that reads the same forward and backward.</p>
 <p>An example is: “A man, a plan, a canal – Panama”</p>
 <p>In this case, we will consider recursions on strings instead of numbers.</p>
@@ -1296,9 +1296,9 @@ Check out:</p></li>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

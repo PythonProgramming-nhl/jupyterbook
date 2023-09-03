@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Lecture 5 - Input/output &#8212; Programming in Python</title>
   
   
@@ -43,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -65,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lecture 6 - Classes in Python" href="../session6/6_classes.html" />
     <link rel="prev" title="Lecture 4 - Compound data types" href="../session4/4_compound_datatypes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -155,8 +157,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../session01/1_simple_datatypes.html">Lecture 0 - Simple data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session01/2_simple_datatypes.html">Lecture 1 - Data types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session2/2_flowcontrol.html">Lecture 2 - Flow control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session3/3_functions.html">Lecture 3 - Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session4/4_compound_datatypes.html">Lecture 4 - Compound data types</a></li>
@@ -389,8 +389,8 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="lecture-5-input-output">
-<h1>Lecture 5 - Input/output<a class="headerlink" href="#lecture-5-input-output" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-5-input-output">
+<h1>Lecture 5 - Input/output<a class="headerlink" href="#lecture-5-input-output" title="Permalink to this heading">#</a></h1>
 <p><strong>Reading numeric data</strong></p>
 <ul class="simple">
 <li><p>All reading/writing is done with text objects, i.e. reading a ‘7’ will be type <code class="docutils literal notranslate"><span class="pre">str</span></code> with a single character rather than a numeric value.</p></li>
@@ -855,8 +855,8 @@ class TextIOWrapper(_TextIOBase)
 </div>
 </div>
 </div>
-<div class="section" id="reading-text-files">
-<h2>Reading text files<a class="headerlink" href="#reading-text-files" title="Permalink to this headline">#</a></h2>
+<section id="reading-text-files">
+<h2>Reading text files<a class="headerlink" href="#reading-text-files" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write code that can read in the file &#39;numbers_one_to_ten.txt&#39;</span>
@@ -1144,9 +1144,9 @@ where the coordinates of each atom is a list in the list</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="writing-files">
-<h2>Writing files<a class="headerlink" href="#writing-files" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="writing-files">
+<h2>Writing files<a class="headerlink" href="#writing-files" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write a file analogous to numbers_one_to_ten.txt</span>
@@ -1208,12 +1208,12 @@ where the coordinates of each atom is a list in the list</p>
 </div>
 </div>
 </div>
-<div class="section" id="remember-to-always-check-your-output-here-the-file-one-way-to-do-that-is-to-read-it-back-in-and-print-it">
-<h3>Remember to always check your output (here the file). One way to do that is to read it back in and print it.<a class="headerlink" href="#remember-to-always-check-your-output-here-the-file-one-way-to-do-that-is-to-read-it-back-in-and-print-it" title="Permalink to this headline">#</a></h3>
-</div>
-</div>
-<div class="section" id="formatted-strings">
-<h2>Formatted strings<a class="headerlink" href="#formatted-strings" title="Permalink to this headline">#</a></h2>
+<section id="remember-to-always-check-your-output-here-the-file-one-way-to-do-that-is-to-read-it-back-in-and-print-it">
+<h3>Remember to always check your output (here the file). One way to do that is to read it back in and print it.<a class="headerlink" href="#remember-to-always-check-your-output-here-the-file-one-way-to-do-that-is-to-read-it-back-in-and-print-it" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="formatted-strings">
+<h2>Formatted strings<a class="headerlink" href="#formatted-strings" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>With the simplest implementation, the “caffeine.xyz” file will look very unordered.</p></li>
 <li><p>While this may not be a problem for the read function (sometimes it is – it depends on the format assumptions made in the read function), it is very unpleasing to look at.</p></li>
@@ -1323,8 +1323,8 @@ Start by reading section “Format Specification Mini-Language”</p>
 </div>
 </div>
 </div>
-<div class="section" id="your-task">
-<h3>Your task:<a class="headerlink" href="#your-task" title="Permalink to this headline">#</a></h3>
+<section id="your-task">
+<h3>Your task:<a class="headerlink" href="#your-task" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Modify your <code class="docutils literal notranslate"><span class="pre">write_xyz</span></code> function from above to write in a nicely formatted output</p></li>
 <li><p>The output xyz file should be named <code class="docutils literal notranslate"><span class="pre">caffeine_NICE.xyz</span></code></p></li>
@@ -1404,10 +1404,10 @@ which should give you the following:</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="reading-and-writing-standard-file-formats">
-<h2>Reading and writing standard file formats<a class="headerlink" href="#reading-and-writing-standard-file-formats" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="reading-and-writing-standard-file-formats">
+<h2>Reading and writing standard file formats<a class="headerlink" href="#reading-and-writing-standard-file-formats" title="Permalink to this heading">#</a></h2>
 <p>As with many other things, there are a wealth of Python modules that can deal with read/write of standard file formats.</p>
 <p>For example:</p>
 <ul class="simple">
@@ -1416,9 +1416,9 @@ which should give you the following:</p>
 <li><p>YAML files (<code class="docutils literal notranslate"><span class="pre">.yaml</span></code>) - <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">yaml</span></code> - <a class="reference external" href="https://pyyaml.org/wiki/PyYAMLDocumentation">More about yaml</a></p></li>
 </ul>
 <p>We will not go through these but I recommend you to have a look: using standard file format is preferable when possible.</p>
-</div>
-<div class="section" id="command-line-parsing-with-argparse">
-<h2>Command-line parsing with argparse<a class="headerlink" href="#command-line-parsing-with-argparse" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="command-line-parsing-with-argparse">
+<h2>Command-line parsing with argparse<a class="headerlink" href="#command-line-parsing-with-argparse" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">argparse</span></code> module is intended to write user-friendly command-line interfaces to Python programs. Check out <a class="reference external" href="https://docs.python.org/3/library/argparse.html">this link</a>.</p>
 <p>It may become handy in one of the project assignments.</p>
 <p>The module is build around an instance of the <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">argparse.ArgumentParser</span></code>, which is nothing but a container for input argument specifications.</p>
@@ -1487,8 +1487,8 @@ which should give you the following:</p>
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

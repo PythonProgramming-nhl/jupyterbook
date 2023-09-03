@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Introduction to matplotlib &#8212; Programming in Python</title>
   
   
@@ -43,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Introduction to NumPy - Numerical Python" href="../numpy/numpy_exercises.html" />
     <link rel="prev" title="Lecture 6 - Classes in Python" href="../session6/6_classes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -157,8 +159,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../session01/1_simple_datatypes.html">Lecture 0 - Simple data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session01/2_simple_datatypes.html">Lecture 1 - Data types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session2/2_flowcontrol.html">Lecture 2 - Flow control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session3/3_functions.html">Lecture 3 - Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session4/4_compound_datatypes.html">Lecture 4 - Compound data types</a></li>
@@ -378,8 +378,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-matplotlib">
-<h1>Introduction to matplotlib<a class="headerlink" href="#introduction-to-matplotlib" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-matplotlib">
+<h1>Introduction to matplotlib<a class="headerlink" href="#introduction-to-matplotlib" title="Permalink to this heading">#</a></h1>
 <p>Matplotlib is a Python library for creating plots and visualizations (static, animated and interactive).</p>
 <ul class="simple">
 <li><p>In this notebook, we will go through some of the basics to get you started – BUT – there are many many more opportunities.</p></li>
@@ -402,13 +402,19 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+</pre></div>
 </div>
-<div class="section" id="let-s-start-by-plotting-a-sine-function">
-<h2>Let’s start by plotting a sine function<a class="headerlink" href="#let-s-start-by-plotting-a-sine-function" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<section id="let-s-start-by-plotting-a-sine-function">
+<h2>Let’s start by plotting a sine function<a class="headerlink" href="#let-s-start-by-plotting-a-sine-function" title="Permalink to this heading">#</a></h2>
 <p>The function:</p>
 <p><span class="math notranslate nohighlight">\(f(x) = y = \sin(x)\)</span></p>
-<div class="section" id="so-what-do-we-need">
-<h3>So, what do we need?<a class="headerlink" href="#so-what-do-we-need" title="Permalink to this headline">#</a></h3>
+<section id="so-what-do-we-need">
+<h3>So, what do we need?<a class="headerlink" href="#so-what-do-we-need" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>A set of x-values covering the range of interest</p></li>
 <li><p>Evaluate the function at these x-values</p></li>
@@ -435,9 +441,9 @@ document.write(`
 <img alt="../_images/85665ca28685b066e0bd1bcabce365f1786e08ae606e34da6a6f08b69733c118.png" src="../_images/85665ca28685b066e0bd1bcabce365f1786e08ae606e34da6a6f08b69733c118.png" />
 </div>
 </div>
-</div>
-<div class="section" id="now-this-is-not-very-pretty">
-<h3>Now this is not very pretty.<a class="headerlink" href="#now-this-is-not-very-pretty" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="now-this-is-not-very-pretty">
+<h3>Now this is not very pretty.<a class="headerlink" href="#now-this-is-not-very-pretty" title="Permalink to this heading">#</a></h3>
 <p><strong>Beautification</strong></p>
 <ul class="simple">
 <li><p>We forgot axis labels</p></li>
@@ -470,9 +476,9 @@ document.write(`
 <img alt="../_images/7bcfcdd34d390d94e2a5c61e6ec53d7e806656a0e890134ef3e97d82e41d5dd9.png" src="../_images/7bcfcdd34d390d94e2a5c61e6ec53d7e806656a0e890134ef3e97d82e41d5dd9.png" />
 </div>
 </div>
-</div>
-<div class="section" id="if-you-have-a-series-of-x-y-values-you-can-also-plot-them-as-separate-points-using-matplotlib-pyplot-scatter">
-<h3>If you have a series of (x, y) values, you can also plot them as separate points using matplotlib.pyplot scatter<a class="headerlink" href="#if-you-have-a-series-of-x-y-values-you-can-also-plot-them-as-separate-points-using-matplotlib-pyplot-scatter" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="if-you-have-a-series-of-x-y-values-you-can-also-plot-them-as-separate-points-using-matplotlib-pyplot-scatter">
+<h3>If you have a series of (x, y) values, you can also plot them as separate points using matplotlib.pyplot scatter<a class="headerlink" href="#if-you-have-a-series-of-x-y-values-you-can-also-plot-them-as-separate-points-using-matplotlib-pyplot-scatter" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This time I use a list just to show you that the inputs can be any float or array-like object</span>
@@ -487,16 +493,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7feedab38a90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd521a3b310&gt;
 </pre></div>
 </div>
 <img alt="../_images/999cfa3c0915054ef361bafe2576ff15de5e9239538262c68b25e4975cfbf552.png" src="../_images/999cfa3c0915054ef361bafe2576ff15de5e9239538262c68b25e4975cfbf552.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="several-subplots">
-<h2>Several subplots<a class="headerlink" href="#several-subplots" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="several-subplots">
+<h2>Several subplots<a class="headerlink" href="#several-subplots" title="Permalink to this heading">#</a></h2>
 <p>We can also make several plots in a figure by using the matplotlib.pyplot subplots function.</p>
 <p>Let’s see an example below where we plot cosine in a plot to the left and sine in a plot to the right.</p>
 <div class="cell docutils container">
@@ -561,9 +567,9 @@ document.write(`
 <img alt="../_images/200530facd87d8183e854a04be8a8720d555fd9dc9fc1917fe6b96f32d281775.png" src="../_images/200530facd87d8183e854a04be8a8720d555fd9dc9fc1917fe6b96f32d281775.png" />
 </div>
 </div>
-</div>
-<div class="section" id="matplotlib-challenge">
-<h2>Matplotlib Challenge<a class="headerlink" href="#matplotlib-challenge" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="matplotlib-challenge">
+<h2>Matplotlib Challenge<a class="headerlink" href="#matplotlib-challenge" title="Permalink to this heading">#</a></h2>
 <p>Now it is your turn.</p>
 <p>Below is a figure based on some data. Provided this data, your task is to reproduce the figure as closely as possible.</p>
 <p>The example data is modified set of historical weather data in Stockholm from <a class="reference external" href="https://bolin.su.se/data/stockholm-historical-daily-temperature-2?n=stockholm-historical-temps-daily-2">bolin.su.se</a></p>
@@ -664,8 +670,8 @@ document.write(`
 <img alt="../_images/3a470a9ac0c87e77d8d5c966ecd3e336b6585a8a205b33859e5a0f0aba3a9eef.png" src="../_images/3a470a9ac0c87e77d8d5c966ecd3e336b6585a8a205b33859e5a0f0aba3a9eef.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

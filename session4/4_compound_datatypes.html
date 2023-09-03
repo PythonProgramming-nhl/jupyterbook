@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Lecture 4 - Compound data types &#8212; Programming in Python</title>
   
   
@@ -43,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -65,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lecture 5 - Input/output" href="../session5/5_input_output.html" />
     <link rel="prev" title="Lecture 3 - Functions" href="../session3/3_functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -155,8 +157,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../session01/1_simple_datatypes.html">Lecture 0 - Simple data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session01/2_simple_datatypes.html">Lecture 1 - Data types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session2/2_flowcontrol.html">Lecture 2 - Flow control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session3/3_functions.html">Lecture 3 - Functions</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 4 - Compound data types</a></li>
@@ -389,8 +389,8 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="lecture-4-compound-data-types">
-<h1>Lecture 4 - Compound data types<a class="headerlink" href="#lecture-4-compound-data-types" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-4-compound-data-types">
+<h1>Lecture 4 - Compound data types<a class="headerlink" href="#lecture-4-compound-data-types" title="Permalink to this heading">#</a></h1>
 <p>Today we will practice working with sequence data types:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Tuple</span></code> (defined using <code class="docutils literal notranslate"><span class="pre">()</span></code>)</p>
@@ -441,7 +441,7 @@ document.write(`
 <li><p>Examples: <code class="docutils literal notranslate"><span class="pre">str,</span> <span class="pre">list,</span> <span class="pre">dict,</span> <span class="pre">set,</span> <span class="pre">tuple</span></code></p></li>
 </ul>
 </li>
-<li><p>An iterator is an object which implements the iterator protocol, which consist of the methods <code class="docutils literal notranslate"><span class="pre">iter()</span></code> and <code class="docutils literal notranslate"><span class="pre">next()</span></code></p>
+<li><p>An iterator is an object which implements the iterator protocol, which consist of the special methods <code class="docutils literal notranslate"><span class="pre">__iter__()</span></code> and <code class="docutils literal notranslate"><span class="pre">__next__()</span></code></p>
 <ul>
 <li><p>Examples: <code class="docutils literal notranslate"><span class="pre">zip,</span> <span class="pre">enumerate</span></code></p></li>
 </ul>
@@ -754,8 +754,8 @@ class zip(object)
 </div>
 </div>
 </div>
-<div class="section" id="indexing-and-slicing">
-<h2>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h2>
+<section id="indexing-and-slicing">
+<h2>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this heading">#</a></h2>
 <p>You can use indexing to access certain elements in the sequence data types.</p>
 <p>Some examples with lists below:</p>
 <ul class="simple">
@@ -863,9 +863,9 @@ class zip(object)
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="iterables-of-iterables">
-<h2>Iterables of iterables<a class="headerlink" href="#iterables-of-iterables" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="iterables-of-iterables">
+<h2>Iterables of iterables<a class="headerlink" href="#iterables-of-iterables" title="Permalink to this heading">#</a></h2>
 <p>The compound data types can contain elements of any type. In other words, their elements could be another iterable.
 For example, list of lists are very useful in many cases.</p>
 <ul class="simple">
@@ -894,9 +894,9 @@ For example, list of lists are very useful in many cases.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="introducing-iterable-comprehensions">
-<h2>Introducing iterable comprehensions<a class="headerlink" href="#introducing-iterable-comprehensions" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="introducing-iterable-comprehensions">
+<h2>Introducing iterable comprehensions<a class="headerlink" href="#introducing-iterable-comprehensions" title="Permalink to this heading">#</a></h2>
 <p>Comprehensions in Python provide us with a short and concise way to construct new sequences (such as lists, set, dictionary etc.) using sequences which have been already defined.</p>
 <p>Python supports four types:</p>
 <ul class="simple">
@@ -1021,9 +1021,9 @@ For example, list of lists are very useful in many cases.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="generators">
-<h2>Generators<a class="headerlink" href="#generators" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="generators">
+<h2>Generators<a class="headerlink" href="#generators" title="Permalink to this heading">#</a></h2>
 <p>We can do other cool stuff using so-called generators.
 We will not dive into details here, I just want to show you the use of two such examples.</p>
 <p>Two very useful generators:</p>
@@ -1106,9 +1106,9 @@ We will not dive into details here, I just want to show you the use of two such 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="dictionaries">
-<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="dictionaries">
+<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write a code that counts the number of times a given letter occurs in a string and returns it as a dictionary called dict_letters</span>
@@ -1158,8 +1158,8 @@ We will not dive into details here, I just want to show you the use of two such 
 </div>
 </div>
 </div>
-<div class="section" id="sorting-a-dictionary-by-values">
-<h3>Sorting a dictionary by values<a class="headerlink" href="#sorting-a-dictionary-by-values" title="Permalink to this headline">#</a></h3>
+<section id="sorting-a-dictionary-by-values">
+<h3>Sorting a dictionary by values<a class="headerlink" href="#sorting-a-dictionary-by-values" title="Permalink to this heading">#</a></h3>
 <p>Knowing how to sort dictionaries according to their values can be very helpful.</p>
 <p>We will be looking at two methods for sorting:</p>
 <ul class="simple">
@@ -1232,9 +1232,9 @@ We will not dive into details here, I just want to show you the use of two such 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="increasing-efficiency-of-fibonacci-using-dictionaries">
-<h3>Increasing efficiency of fibonacci using dictionaries<a class="headerlink" href="#increasing-efficiency-of-fibonacci-using-dictionaries" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="increasing-efficiency-of-fibonacci-using-dictionaries">
+<h3>Increasing efficiency of fibonacci using dictionaries<a class="headerlink" href="#increasing-efficiency-of-fibonacci-using-dictionaries" title="Permalink to this heading">#</a></h3>
 <p>Last time we implemented a function <code class="docutils literal notranslate"><span class="pre">fibonacci</span></code> to compute Fibonacci numbers. I have pasted my version in below.</p>
 <p>We did so using recursion. We saw that the number of calls to the <code class="docutils literal notranslate"><span class="pre">fibonacci</span></code> grew very quickly and a lot of numbers have to be recalculated.</p>
 <p>I try to demonstrate this below using my original implementation.</p>
@@ -1322,10 +1322,10 @@ We will not dive into details here, I just want to show you the use of two such 
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="mutables-versus-immutables-and-objects">
-<h2>Mutables versus immutables and objects<a class="headerlink" href="#mutables-versus-immutables-and-objects" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="mutables-versus-immutables-and-objects">
+<h2>Mutables versus immutables and objects<a class="headerlink" href="#mutables-versus-immutables-and-objects" title="Permalink to this heading">#</a></h2>
 <p>This is an introductory course to Python, so we will not dive deep into memory.</p>
 <p>Yet, you need to understand:</p>
 <ul class="simple">
@@ -1414,9 +1414,9 @@ We will not dive into details here, I just want to show you the use of two such 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="an-extension-of-the-above-discussion-to-functions">
-<h2>An extension of the above discussion to functions<a class="headerlink" href="#an-extension-of-the-above-discussion-to-functions" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="an-extension-of-the-above-discussion-to-functions">
+<h2>An extension of the above discussion to functions<a class="headerlink" href="#an-extension-of-the-above-discussion-to-functions" title="Permalink to this heading">#</a></h2>
 <p>Why do I show you this?</p>
 <ul class="simple">
 <li><p>Because this is very common surprise (a negative one, producing unexpected results) when you are new to programming in Python!</p></li>
@@ -1512,8 +1512,8 @@ We will not dive into details here, I just want to show you the use of two such 
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
