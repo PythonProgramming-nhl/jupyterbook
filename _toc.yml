@@ -5,7 +5,6 @@ format: jb-book
 root: intro
 chapters:
 #- file: markdown
-- file: session0/0_getting_started
 - file: session1/1_simple_datatypes
 - file: session2/2_flowcontrol
 - file: session3/3_functions
