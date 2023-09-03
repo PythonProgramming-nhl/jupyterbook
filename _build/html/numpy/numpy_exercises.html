@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Introduction to NumPy - Numerical Python &#8212; Programming in Python</title>
   
   
@@ -43,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -64,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Introduction to matplotlib" href="../matplotlib/matplotlib_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -154,8 +156,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../session01/1_simple_datatypes.html">Lecture 0 - Simple data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session01/2_simple_datatypes.html">Lecture 1 - Data types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session2/2_flowcontrol.html">Lecture 2 - Flow control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session3/3_functions.html">Lecture 3 - Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session4/4_compound_datatypes.html">Lecture 4 - Compound data types</a></li>
@@ -375,8 +375,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-numpy-numerical-python">
-<h1>Introduction to NumPy - Numerical Python<a class="headerlink" href="#introduction-to-numpy-numerical-python" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-numpy-numerical-python">
+<h1>Introduction to NumPy - Numerical Python<a class="headerlink" href="#introduction-to-numpy-numerical-python" title="Permalink to this heading">#</a></h1>
 <p>NumPy - numerical Python - is an external library for scientific computing in Python.</p>
 <p>It provides a multidimensional array object (ndarray) and a multitude of of routines for fast operations on arrays, including:</p>
 <ul class="simple">
@@ -407,9 +407,15 @@ Data types allowed in NumPy arrays:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+</pre></div>
 </div>
-<div class="section" id="the-nympy-array">
-<h2>The NymPy array<a class="headerlink" href="#the-nympy-array" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<section id="the-nympy-array">
+<h2>The NymPy array<a class="headerlink" href="#the-nympy-array" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating an array directly from numbers</span>
@@ -477,9 +483,9 @@ array_3D
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="mathematical-operations">
-<h2>Mathematical operations<a class="headerlink" href="#mathematical-operations" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="mathematical-operations">
+<h2>Mathematical operations<a class="headerlink" href="#mathematical-operations" title="Permalink to this heading">#</a></h2>
 <p><strong>Element-wise arithmetic operations</strong> (between equally-sized arrays where elements are numbers)</p>
 <ul class="simple">
 <li><p>Addition</p></li>
@@ -579,9 +585,9 @@ scalar divide:  [0.5 1.5 2. ]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="array-creation-functions">
-<h2>Array creation functions<a class="headerlink" href="#array-creation-functions" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="array-creation-functions">
+<h2>Array creation functions<a class="headerlink" href="#array-creation-functions" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an array filled with zeros of specified dimensions. Here a 2D array with shape (3, 4)</span>
@@ -622,9 +628,9 @@ zero array like array a:  [0 0 0 0 0] (5,)
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="indexing-and-slicing">
-<h2>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="indexing-and-slicing">
+<h2>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this heading">#</a></h2>
 <p>Like we have seen for the standard compound data types, we can index and slice an ndarray.</p>
 <ul class="simple">
 <li><p>If the array is multidimensional, you will need to specify the index or slicing for each dimension.</p></li>
@@ -732,9 +738,9 @@ Slice: array  [1 5 9]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="boolean-masking-and-indexing">
-<h2>Boolean masking and indexing<a class="headerlink" href="#boolean-masking-and-indexing" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="boolean-masking-and-indexing">
+<h2>Boolean masking and indexing<a class="headerlink" href="#boolean-masking-and-indexing" title="Permalink to this heading">#</a></h2>
 <p>You can also filter elements from an array based on a specific condition.
 We do this by using boolean masks to specify the condition.</p>
 <p><strong>Boolean indexing:</strong> Allows you to create a filtered subset of an array by passing a boolean mask as an index.</p>
@@ -797,9 +803,9 @@ Filtered an_array:  [26 90 88 23 11  2] (6,)
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="conditions-and-arrays">
-<h2>Conditions and arrays<a class="headerlink" href="#conditions-and-arrays" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="conditions-and-arrays">
+<h2>Conditions and arrays<a class="headerlink" href="#conditions-and-arrays" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">numpy.where(&lt;condition&gt;,</span> <span class="pre">&lt;firstarray&gt;,</span> <span class="pre">&lt;secondarray&gt;)</span></code> function yields the expression <code class="docutils literal notranslate"><span class="pre">x</span></code> if condition is satisfied, otherwise <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <p>For boolean arrays, <code class="docutils literal notranslate"><span class="pre">numpy.any</span></code> evaluates whether one or more values in an array is <code class="docutils literal notranslate"><span class="pre">True</span></code>, while <code class="docutils literal notranslate"><span class="pre">numpy.all</span></code> checks if every value is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <div class="cell docutils container">
@@ -839,9 +845,9 @@ False
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="saving-and-loading-numpy-arrays">
-<h2>Saving and loading NumPy arrays<a class="headerlink" href="#saving-and-loading-numpy-arrays" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="saving-and-loading-numpy-arrays">
+<h2>Saving and loading NumPy arrays<a class="headerlink" href="#saving-and-loading-numpy-arrays" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>To save a NumPy array in NumPy file (suffix .npy), we use <code class="docutils literal notranslate"><span class="pre">numpy.save(&lt;filename&gt;,</span> <span class="pre">&gt;array_name&gt;)</span></code></p></li>
 <li><p>To load a NumPy array from a NumPy file, we use <code class="docutils literal notranslate"><span class="pre">numpy.load(&lt;filename.npy&gt;)</span></code></p></li>
@@ -862,9 +868,9 @@ False
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="linear-algebra-with-numpy">
-<h2>Linear algebra with NumPy<a class="headerlink" href="#linear-algebra-with-numpy" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="linear-algebra-with-numpy">
+<h2>Linear algebra with NumPy<a class="headerlink" href="#linear-algebra-with-numpy" title="Permalink to this heading">#</a></h2>
 <p>NumPy arrays are most often used for numerical data and linear algebra.
 There is a linear algebra module in NumPy:</p>
 <p><code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code></p>
@@ -888,8 +894,8 @@ Eigenvectors:  [[-0.89442719 -0.4472136 ]
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

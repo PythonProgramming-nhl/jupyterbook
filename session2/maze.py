@@ -1,3 +1,14 @@
+"""
+Thank you for being curious!
+
+This file is NOT an example of great code.
+It is purposefully not using classes because we
+have not yet covered them. 
+
+You will later see examples using classes, and why these
+should have been used instead. That said, feel free to be inspired
+by other Python tricks in this file :-)
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 import copy
@@ -187,31 +198,3 @@ def move_forward():
     MAZE[POSITION[0], POSITION[1]] = 4
 
 
-### IGNORE BEGIN ###
-
-
-def run(use_right=True):
-    while True:
-        if use_right:
-            if is_right_clear():
-                turn_right()
-                move_forward()
-            elif is_front_clear():
-                move_forward()
-            else:
-                turn_left()
-        else:
-            if is_left_clear():
-                turn_left()
-                move_forward()
-            elif is_front_clear():
-                move_forward()
-            else:
-                turn_right()
-
-
-if __name__ == "__main__":
-    fig = reset_start(MAZE1)
-    run()
-
-### IGNORE END ###

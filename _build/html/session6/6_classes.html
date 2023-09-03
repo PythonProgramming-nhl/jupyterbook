@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Lecture 6 - Classes in Python &#8212; Programming in Python</title>
   
   
@@ -43,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -65,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Introduction to matplotlib" href="../matplotlib/matplotlib_exercises.html" />
     <link rel="prev" title="Lecture 5 - Input/output" href="../session5/5_input_output.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -155,8 +157,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../session01/1_simple_datatypes.html">Lecture 0 - Simple data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session01/2_simple_datatypes.html">Lecture 1 - Data types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session2/2_flowcontrol.html">Lecture 2 - Flow control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session3/3_functions.html">Lecture 3 - Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session4/4_compound_datatypes.html">Lecture 4 - Compound data types</a></li>
@@ -381,8 +381,8 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="lecture-6-classes-in-python">
-<h1>Lecture 6 - Classes in Python<a class="headerlink" href="#lecture-6-classes-in-python" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-6-classes-in-python">
+<h1>Lecture 6 - Classes in Python<a class="headerlink" href="#lecture-6-classes-in-python" title="Permalink to this heading">#</a></h1>
 <p><strong>REMEMBER:</strong></p>
 <ul class="simple">
 <li><p>use getter/setter or decorators for good coding practice</p>
@@ -417,8 +417,8 @@ document.write(`
 <li><p>class method(<code class="docutils literal notranslate"><span class="pre">cls,</span> <span class="pre">arguments</span></code>): can access the class (via cls) but cannot access the instance (via self). Use <code class="docutils literal notranslate"><span class="pre">&#64;classmethod</span></code> decorator</p></li>
 <li><p>static method is a function in a class that is like an ordinary function, that does not depend on any instance (no self handle). Use <code class="docutils literal notranslate"><span class="pre">&#64;staticmethod</span></code> decorator</p></li>
 </ul>
-<div class="section" id="a-create-a-class-for-a-three-dimensional-vector">
-<h2>A. Create a class for a three-dimensional vector<a class="headerlink" href="#a-create-a-class-for-a-three-dimensional-vector" title="Permalink to this headline">#</a></h2>
+<section id="a-create-a-class-for-a-three-dimensional-vector">
+<h2>A. Create a class for a three-dimensional vector<a class="headerlink" href="#a-create-a-class-for-a-three-dimensional-vector" title="Permalink to this heading">#</a></h2>
 <p>Create a class for storing a 3D vector (x, y, z coordinates), and which provides a set of functions for manipulating the coordinates.</p>
 <p>The class Vector3D should have the following properties:</p>
 <ul class="simple">
@@ -634,9 +634,9 @@ document.write(`
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="class-for-currency-data-storage">
-<h2>Class for currency data storage<a class="headerlink" href="#class-for-currency-data-storage" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="class-for-currency-data-storage">
+<h2>Class for currency data storage<a class="headerlink" href="#class-for-currency-data-storage" title="Permalink to this heading">#</a></h2>
 <p>Create a class for storing money in SEK, Euro and Dollars and provides methods for manipulating the amount and type of currency.</p>
 <p>The class Money should have the following properties:</p>
 <ul>
@@ -815,9 +815,9 @@ document.write(`
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="inheritance-parent-and-child-classes">
-<h2>Inheritance, parent and child classes<a class="headerlink" href="#inheritance-parent-and-child-classes" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="inheritance-parent-and-child-classes">
+<h2>Inheritance, parent and child classes<a class="headerlink" href="#inheritance-parent-and-child-classes" title="Permalink to this heading">#</a></h2>
 <p>A main concept in object-oriented programming is inheritance.</p>
 <p>Some benefits of inheritance:</p>
 <ul class="simple">
@@ -825,11 +825,11 @@ document.write(`
 <li><p>Avoid replication of code. We do not need to rewrite similar code piece over and over again</p></li>
 </ul>
 <p><strong>Syntax of simple inheritance:</strong></p>
-<p>As a class (by default in Python 3 or explicitly in Python 2) inherents from the built-in <code class="docutils literal notranslate"><span class="pre">object</span></code> class</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span> <span class="c1"># Parent class inherents from the built-in object class</span>
+<p>As a class (by default in Python 3 or explicitly in Python 2) inherits from the built-in <code class="docutils literal notranslate"><span class="pre">object</span></code> class</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span> <span class="c1"># Parent class inherits from the built-in object class</span>
     <span class="o">&lt;</span><span class="n">body</span> <span class="n">of</span> <span class="n">code</span><span class="o">&gt;</span>
 
-<span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">ParentClass</span><span class="p">):</span> <span class="c1">#Child class inherents from the Parent class</span>
+<span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">ParentClass</span><span class="p">):</span> <span class="c1">#Child class inherits from the Parent class</span>
     <span class="o">&lt;</span><span class="n">body</span> <span class="n">of</span> <span class="n">code</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -859,7 +859,7 @@ document.write(`
 <ul class="simple">
 <li><p>introduce additional data attributes</p></li>
 <li><p>introduce additional procedural attributes (methods)</p></li>
-<li><p>override methods from the parent class (use the same name for the method in a child class as its parent class in order to override the behavior).</p></li>
+<li><p>override methods from the parent class (use the same name for the method in a child class as its parent class in order to override the behavior). This is called polymorphism.</p></li>
 </ul>
 <p><strong>Hierachies:</strong></p>
 <p>Child class can have methods with same name as superclass. So, how do we keep track of which one to use?</p>
@@ -996,8 +996,8 @@ document.write(`
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
