@@ -167,6 +167,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../session6/6_classes.html">Lecture 6 - Classes in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../matplotlib/matplotlib_exercises.html">Introduction to matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numpy/numpy_exercises.html">Introduction to NumPy - Numerical Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/pandas_exercises.html">Introduction to Pandas - Python Data Analysis Library</a></li>
+
+
 </ul>
 
     </div>
@@ -469,7 +472,7 @@ While this gives a lot of flexibilit, it can also be a potential source of issue
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write a function that &#39;mymax&#39; that accepts two numbers as parameters and that prints the larger number to the screen. </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write a function that &#39;mymax&#39; that accepts two numbers as parameters and that prints to the screen and returns the larger number. </span>
 <span class="c1"># For this elementary exercise, do not use the built-in function &#39;max()&#39; - just revert to elementary expressions and statements.</span>
 
 
@@ -963,7 +966,7 @@ Value of x outside function after function call but now reassigning x to the out
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now to an example, where we try to access a variable outside scope. </span>
-<span class="c1"># Here we pass in x as argument of the function. x is defined outside the function (global variable), which means that Python can access its value inside the function BUT NOT modify it.</span>
+<span class="c1"># Here we not pass in x as argument of the function. Rather x is defined outside the function (global variable), which means that Python can access its value inside the function BUT NOT modify it.</span>
 <span class="c1"># To modify it, we would have to declare it a global variable inside the function</span>
 
 <span class="k">def</span> <span class="nf">show_x</span><span class="p">():</span>

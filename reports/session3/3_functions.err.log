@@ -18,7 +18,7 @@ Traceback (most recent call last):
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 # Now to an example, where we try to access a variable outside scope. 
-# Here we pass in x as argument of the function. x is defined outside the function (global variable), which means that Python can access its value inside the function BUT NOT modify it.
+# Here we not pass in x as argument of the function. Rather x is defined outside the function (global variable), which means that Python can access its value inside the function BUT NOT modify it.
 # To modify it, we would have to declare it a global variable inside the function
 
 def show_x():
