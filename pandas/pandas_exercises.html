@@ -165,8 +165,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../matplotlib/matplotlib_exercises.html">Introduction to matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numpy/numpy_exercises.html">Introduction to NumPy - Numerical Python</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Pandas - Python Data Analysis Library</a></li>
-
-
 </ul>
 
     </div>
@@ -360,19 +358,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to Pandas - Python Data Analysis Library</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-pandas-series">The Pandas Series</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-pandas-series">The Pandas Series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-to-inspect-the-data">Functions to inspect the data</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-the-workhorse-of-pandas">Pandas DataFrame : The workhorse of Pandas</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-the-workhorse-of-pandas">Pandas DataFrame : The workhorse of Pandas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-dataset">CSV dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quering-data-from-a-dataframe">Quering data from a dataframe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-data-from-dataframes">Plotting data from dataframes</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -411,9 +403,8 @@ Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) S
 </div>
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-pandas-series">
-<h1>The Pandas Series<a class="headerlink" href="#the-pandas-series" title="Permalink to this heading">#</a></h1>
+<section id="the-pandas-series">
+<h2>The Pandas Series<a class="headerlink" href="#the-pandas-series" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a series directly from numbers (same type)</span>
@@ -484,6 +475,7 @@ dtype: float64
 </div>
 </div>
 </div>
+</section>
 <section id="functions-to-inspect-the-data">
 <h2>Functions to inspect the data<a class="headerlink" href="#functions-to-inspect-the-data" title="Permalink to this heading">#</a></h2>
 <p>Pandas offers a lot of functions to inspect or run data analysis directly on the Series or DataFrame (which we will see later in the notebook)</p>
@@ -600,9 +592,8 @@ Name: count, dtype: int64
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="pandas-dataframe-the-workhorse-of-pandas">
-<h1>Pandas DataFrame : The workhorse of Pandas<a class="headerlink" href="#pandas-dataframe-the-workhorse-of-pandas" title="Permalink to this heading">#</a></h1>
+<section id="pandas-dataframe-the-workhorse-of-pandas">
+<h2>Pandas DataFrame : The workhorse of Pandas<a class="headerlink" href="#pandas-dataframe-the-workhorse-of-pandas" title="Permalink to this heading">#</a></h2>
 <p>Pandas dataframe is a 2-dimensional array that, again, allows mixed data types.
 This object offers a lot of functions to describe, sort, search and analyse data.
 One advantage of the dataframe, is that the columns are named, just like we know from an excel spreadsheet.</p>
@@ -691,6 +682,7 @@ One advantage of the dataframe, is that the columns are named, just like we know
 </table>
 </div></div></div>
 </div>
+</section>
 <section id="csv-dataset">
 <h2>CSV dataset<a class="headerlink" href="#csv-dataset" title="Permalink to this heading">#</a></h2>
 <p>Let us take a look at a dataset from Kaggle: <a class="reference external" href="https://www.kaggle.com/datasets/sujithmandala/second-hand-car-price-prediction">Used car sales data</a></p>
@@ -1801,19 +1793,13 @@ Here quering refers to selecting a subset of the dataframe.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to Pandas - Python Data Analysis Library</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-pandas-series">The Pandas Series</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-pandas-series">The Pandas Series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-to-inspect-the-data">Functions to inspect the data</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-the-workhorse-of-pandas">Pandas DataFrame : The workhorse of Pandas</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-the-workhorse-of-pandas">Pandas DataFrame : The workhorse of Pandas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-dataset">CSV dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quering-data-from-a-dataframe">Quering data from a dataframe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-data-from-dataframes">Plotting data from dataframes</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
