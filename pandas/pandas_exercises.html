@@ -364,6 +364,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-dataset">CSV dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quering-data-from-a-dataframe">Quering data from a dataframe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-data-from-dataframes">Plotting data from dataframes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-data-the-weather-in-stockholm">Time series data : The weather in Stockholm</a></li>
 </ul>
             </nav>
         </div>
@@ -1733,6 +1734,205 @@ Here quering refers to selecting a subset of the dataframe.</p>
 </div>
 </div>
 </section>
+<section id="time-series-data-the-weather-in-stockholm">
+<h2>Time series data : The weather in Stockholm<a class="headerlink" href="#time-series-data-the-weather-in-stockholm" title="Permalink to this heading">#</a></h2>
+<p>Pandas has a lot of neat functions to work with time series data. Below we will revisit the weather data from the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> workbook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing os to help with paths</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First we need to read in the data. But since we have a &#39;date&#39; field, we can tell pandas to treat it as such.</span>
+<span class="c1"># The first column is a date:</span>
+<span class="n">date_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+
+<span class="c1"># using the date_cols, we can tell pandas to convert into datetimes by using the &#39;parse_dates&#39; argument </span>
+<span class="n">weather_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">,</span><span class="s2">&quot;matplotlib&quot;</span><span class="p">,</span> <span class="s2">&quot;stockholm_daily_mean_avg_std_temperature.csv&quot;</span><span class="p">),</span> <span class="n">parse_dates</span><span class="o">=</span><span class="n">date_cols</span><span class="p">)</span>
+
+<span class="c1"># Let us investigate the data a bit  - and we can see that the date field is now a datetime</span>
+<span class="n">weather_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 45132 entries, 0 to 45131
+Data columns (total 4 columns):
+ #   Column      Non-Null Count  Dtype         
+---  ------      --------------  -----         
+ 0   date        45132 non-null  datetime64[ns]
+ 1   mean        45132 non-null  float64       
+ 2   avg_toy     45132 non-null  float64       
+ 3   stddev_toy  45132 non-null  float64       
+dtypes: datetime64[ns](1), float64(3)
+memory usage: 1.4 MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s extract 2000 to 2010</span>
+<span class="c1"># &#39;date&#39; is the column name</span>
+<span class="n">sub_df</span> <span class="o">=</span> <span class="n">weather_df</span><span class="p">[</span><span class="n">weather_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="s1">&#39;2000-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2010-01-01&#39;</span><span class="p">)]</span>
+<span class="n">sub_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>mean</th>
+      <th>avg_toy</th>
+      <th>stddev_toy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>36524</th>
+      <td>2000-01-01</td>
+      <td>-2.3</td>
+      <td>-2.23</td>
+      <td>4.96</td>
+    </tr>
+    <tr>
+      <th>36525</th>
+      <td>2000-01-02</td>
+      <td>1.3</td>
+      <td>-1.78</td>
+      <td>4.57</td>
+    </tr>
+    <tr>
+      <th>36526</th>
+      <td>2000-01-03</td>
+      <td>0.8</td>
+      <td>-1.93</td>
+      <td>4.55</td>
+    </tr>
+    <tr>
+      <th>36527</th>
+      <td>2000-01-04</td>
+      <td>3.5</td>
+      <td>-2.35</td>
+      <td>4.83</td>
+    </tr>
+    <tr>
+      <th>36528</th>
+      <td>2000-01-05</td>
+      <td>-0.6</td>
+      <td>-2.78</td>
+      <td>5.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now lets plot the mean temperature</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">sub_df</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean temperature [C]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Mean temperature [C]&#39;)
+</pre></div>
+</div>
+<img alt="../_images/029e92c8ecbee1d1675abf75f215880c7880a5adef75e0a358b2619848c1cb5d.png" src="../_images/029e92c8ecbee1d1675abf75f215880c7880a5adef75e0a358b2619848c1cb5d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can also create a rolling mean of e.g. 7 days.</span>
+
+<span class="c1"># each row in the data frame is one day, so that is just a rolling mean of 7 rows:</span>
+<span class="n">sub_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;weekly_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_df</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Now let&#39;s see what data we have</span>
+<span class="n">sub_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="c1"># and plot it using the mean</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">sub_df</span><span class="p">[</span><span class="s1">&#39;weekly_mean&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean temperature [C]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 3654 entries, 36524 to 40177
+Data columns (total 5 columns):
+ #   Column       Non-Null Count  Dtype         
+---  ------       --------------  -----         
+ 0   date         3654 non-null   datetime64[ns]
+ 1   mean         3654 non-null   float64       
+ 2   avg_toy      3654 non-null   float64       
+ 3   stddev_toy   3654 non-null   float64       
+ 4   weekly_mean  3648 non-null   float64       
+dtypes: datetime64[ns](1), float64(4)
+memory usage: 171.3 KB
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/0t/hldwbyfj7ls81tng6gt60p7r0000gn/T/ipykernel_76242/1679289622.py:4: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  sub_df.loc[:,&#39;weekly_mean&#39;] = sub_df[&#39;mean&#39;].rolling(7).mean()
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Mean temperature [C]&#39;)
+</pre></div>
+</div>
+<img alt="../_images/0897c20e03e0d2d7e903a1c7e1eb9636cda716cb83376c15793ad95dc15c38b7.png" src="../_images/0897c20e03e0d2d7e903a1c7e1eb9636cda716cb83376c15793ad95dc15c38b7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imagine if we instead want to see the yearly mean on all the data</span>
+<span class="n">weather_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;yearly_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weather_df</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">365</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">weather_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;ten_year_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weather_df</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">3650</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">weather_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">weather_df</span><span class="p">[</span><span class="s1">&#39;yearly_mean&#39;</span><span class="p">],</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Yearly running average&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">weather_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">weather_df</span><span class="p">[</span><span class="s1">&#39;ten_year_mean&#39;</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ten year running average&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean temperature [C]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe9986917f0&gt;
+</pre></div>
+</div>
+<img alt="../_images/d7605c6a7cf5524e8af3a339cf50cc2b503ab6dba649a842f2a3d70008287268.png" src="../_images/d7605c6a7cf5524e8af3a339cf50cc2b503ab6dba649a842f2a3d70008287268.png" />
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1799,6 +1999,7 @@ Here quering refers to selecting a subset of the dataframe.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-dataset">CSV dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quering-data-from-a-dataframe">Quering data from a dataframe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-data-from-dataframes">Plotting data from dataframes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-data-the-weather-in-stockholm">Time series data : The weather in Stockholm</a></li>
 </ul>
   </nav></div>
 
