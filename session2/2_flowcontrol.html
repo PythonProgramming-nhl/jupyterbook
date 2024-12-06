@@ -585,7 +585,7 @@ s
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">times</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enthusiasm level (1-10): &quot;</span><span class="p">))</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># While loop example to reproduce with for loop</span>
 
-<span class="nn">File ~/opt/miniconda3/envs/bb1000/lib/python3.9/site-packages/ipykernel/kernelbase.py:1201,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
+<span class="nn">File ~/opt/miniconda3/envs/bb1000_ht23/lib/python3.9/site-packages/ipykernel/kernelbase.py:1201,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1199</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1200</span>     <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
 <span class="ne">-&gt; </span><span class="mi">1201</span>     <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
@@ -614,6 +614,26 @@ s
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Give me an N! N
+Give me an a! a
+Give me an n! n
+Give me an n! n
+Give me an a! a
+What does that spell?
+Nanna !
+Nanna !
+Nanna !
+Nanna !
+Nanna !
+Nanna !
+Nanna !
+Nanna !
+Nanna !
+Nanna !
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -629,6 +649,11 @@ s
     <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="n">max_number</span><span class="p">:</span>
         <span class="n">max_number</span> <span class="o">=</span> <span class="n">number</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">max_number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>142
 </pre></div>
 </div>
 </div>
@@ -654,6 +679,30 @@ s
     <span class="n">row</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">69</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------
+   1 |    2 |    3 |    4 |    5 |    6 |    7 |    8 |    9 |   10 | 
+---------------------------------------------------------------------
+   2 |    4 |    6 |    8 |   10 |   12 |   14 |   16 |   18 |   20 | 
+---------------------------------------------------------------------
+   3 |    6 |    9 |   12 |   15 |   18 |   21 |   24 |   27 |   30 | 
+---------------------------------------------------------------------
+   4 |    8 |   12 |   16 |   20 |   24 |   28 |   32 |   36 |   40 | 
+---------------------------------------------------------------------
+   5 |   10 |   15 |   20 |   25 |   30 |   35 |   40 |   45 |   50 | 
+---------------------------------------------------------------------
+   6 |   12 |   18 |   24 |   30 |   36 |   42 |   48 |   54 |   60 | 
+---------------------------------------------------------------------
+   7 |   14 |   21 |   28 |   35 |   42 |   49 |   56 |   63 |   70 | 
+---------------------------------------------------------------------
+   8 |   16 |   24 |   32 |   40 |   48 |   56 |   64 |   72 |   80 | 
+---------------------------------------------------------------------
+   9 |   18 |   27 |   36 |   45 |   54 |   63 |   72 |   81 |   90 | 
+---------------------------------------------------------------------
+  10 |   20 |   30 |   40 |   50 |   60 |   70 |   80 |   90 |  100 | 
 </pre></div>
 </div>
 </div>
@@ -686,6 +735,11 @@ s
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\n---------------------------------------------------------------------\n   1 |    2 |    3 |    4 |    5 |    6 |    7 |    8 |    9 |   10 | \n---------------------------------------------------------------------\n   2 |    4 |    6 |    8 |   10 |   12 |   14 |   16 |   18 |   20 | \n---------------------------------------------------------------------\n   3 |    6 |    9 |   12 |   15 |   18 |   21 |   24 |   27 |   30 | \n---------------------------------------------------------------------\n   4 |    8 |   12 |   16 |   20 |   24 |   28 |   32 |   36 |   40 | \n---------------------------------------------------------------------\n   5 |   10 |   15 |   20 |   25 |   30 |   35 |   40 |   45 |   50 | \n---------------------------------------------------------------------\n   6 |   12 |   18 |   24 |   30 |   36 |   42 |   48 |   54 |   60 | \n---------------------------------------------------------------------\n   7 |   14 |   21 |   28 |   35 |   42 |   49 |   56 |   63 |   70 | \n---------------------------------------------------------------------\n   8 |   16 |   24 |   32 |   40 |   48 |   56 |   64 |   72 |   80 | \n---------------------------------------------------------------------\n   9 |   18 |   27 |   36 |   45 |   54 |   63 |   72 |   81 |   90 | \n---------------------------------------------------------------------\n  10 |   20 |   30 |   40 |   50 |   60 |   70 |   80 |   90 |  100 |\n &#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -706,6 +760,12 @@ s
             <span class="k">continue</span>
     <span class="n">super_string</span> <span class="o">+=</span> <span class="n">string</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">super_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We located &#39;to&#39; and are now ready to inject &#39; super&#39;
+From zero to super hero
 </pre></div>
 </div>
 </div>
@@ -808,7 +868,7 @@ That is, we want to calculate <span class="math notranslate nohighlight">\(x\)</
 <span class="kn">from</span> <span class="nn">maze</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1"># You can change between MAZE0, MAZE1 and MAZE2 for increasing difficulty</span>
-<span class="n">reset_start</span><span class="p">(</span><span class="n">MAZE0</span><span class="p">)</span>
+<span class="n">reset_start</span><span class="p">(</span><span class="n">MAZE2</span><span class="p">)</span>
 <span class="k">while</span> <span class="n">is_running</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">is_right_clear</span><span class="p">():</span>
         <span class="n">turn_right</span><span class="p">()</span>
@@ -817,6 +877,11 @@ That is, we want to calculate <span class="math notranslate nohighlight">\(x\)</
         <span class="n">move_forward</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">turn_left</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Yay you completed the maze!
 </pre></div>
 </div>
 </div>
